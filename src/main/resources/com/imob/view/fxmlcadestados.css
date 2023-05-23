@@ -1,0 +1,21 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+/*Mudar cor de textfiled e password e combobox*/
+.jfx-text-field, .jfx-password-field, .jfx-text-area, .jfx-combo-box {
+    -fx-prompt-text-fill: WHITE;
+    -jfx-focus-color: ORANGE;
+    -jfx-unfocus-color: YELLOW;
+    -fx-text-inner-color: WHITE;
+    
+}
+/*Mudar cor do texto selecionado no combobox*/
+.jfx-combo-box .cell {
+     -fx-text-fill: white;
+     -fx-background-color : #2A2A2A;
+}

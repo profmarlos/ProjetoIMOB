@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="apPrincipal" maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCadEstadosController">
+    <stylesheets>
+        <URL value="@fxmlcadestados.css" />
+    </stylesheets>
+   <children>
+      <Pane layoutX="-10.0" maxHeight="180.0" maxWidth="1220.0" minHeight="180.0" minWidth="1220.0" prefHeight="180.0" prefWidth="1220.0" style="-fx-background-color: #0F1214;">
+         <children>
+            <Label fx:id="lblFecharCadastro" layoutX="1169.0" layoutY="14.0" onMouseClicked="#fecharCadastro" text="X" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Label layoutX="132.0" layoutY="43.0" text="Cadastro de Estados" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic Bold Italic" size="29.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="122.0" layoutY="117.0" maxHeight="580.0" maxWidth="1000.0" minHeight="580.0" minWidth="1000.0" prefHeight="580.0" prefWidth="1000.0" style="-fx-background-color: #2A2A2A;">
+         <children>
+            <JFXTextField fx:id="txtCodigoEstado" editable="false" labelFloat="true" layoutX="41.0" layoutY="38.0" promptText="Código Estado" styleClass="jfx-text-field">
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtNomeEstado" labelFloat="true" layoutX="279.0" layoutY="38.0" prefHeight="39.0" prefWidth="503.0" promptText="Nome Estado" styleClass="jfx-text-field">
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtSiglaEstado" labelFloat="true" layoutX="828.0" layoutY="38.0" prefHeight="39.0" prefWidth="133.0" promptText="Sigla Estado" styleClass="jfx-text-field">
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="18.0" />
+               </font>
+            </JFXTextField>
+            <TableView fx:id="tbEstados" layoutX="41.0" layoutY="119.0" onMouseClicked="#selecionarLinhaViewTable" prefHeight="417.0" prefWidth="922.0">
+              <columns>
+                <TableColumn fx:id="colunaCodigoEstado" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Código Estado" />
+                <TableColumn fx:id="colunaNomeEstado" prefWidth="75.0" text="Nome Estado" />
+                  <TableColumn fx:id="colunaSiglaEstado" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Sigla Estado" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <effect>
+                  <DropShadow color="WHITE" />
+               </effect>
+            </TableView>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutX="122.0" layoutY="726.0" prefHeight="62.0" prefWidth="184.0">
+         <children>
+            <JFXButton fx:id="btnLimpar" maxHeight="50.0" maxWidth="180.0" minHeight="50.0" minWidth="180.0" onAction="#limparCampos" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: orange;" text="LIMPAR" textFill="WHITE">
+               <effect>
+                  <DropShadow color="#141414" />
+               </effect>
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutX="938.0" layoutY="726.0" prefHeight="62.0" prefWidth="184.0">
+         <children>
+            <JFXButton fx:id="btnSalvar" maxHeight="50.0" maxWidth="180.0" minHeight="50.0" minWidth="180.0" onAction="#inserirDaddosNoBancoDados" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: red;" text="INSERIR" textFill="WHITE">
+               <effect>
+                  <DropShadow color="#141414" />
+               </effect>
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutX="401.0" layoutY="726.0" prefHeight="62.0" prefWidth="184.0">
+         <children>
+            <JFXButton fx:id="btnDeletar" maxHeight="50.0" maxWidth="180.0" minHeight="50.0" minWidth="180.0" onAction="#deletarDadosSelecionados" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: BLACK;" text="DELETAR" textFill="WHITE">
+               <effect>
+                  <DropShadow color="#141414" />
+               </effect>
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <AnchorPane layoutX="672.0" layoutY="726.0" prefHeight="62.0" prefWidth="184.0">
+         <children>
+            <JFXButton fx:id="btnAtualizar" maxHeight="50.0" maxWidth="180.0" minHeight="50.0" minWidth="180.0" onAction="#atualizarDadosSelecionados" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: BLUE;" text="ATUALIZAR" textFill="WHITE">
+               <effect>
+                  <DropShadow color="#141414" />
+               </effect>
+               <font>
+                  <Font name="Century Gothic Bold Italic" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+</AnchorPane>

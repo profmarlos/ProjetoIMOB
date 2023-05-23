@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" fx:id="apPrincipal" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLTelaPrincipalController">
+    <stylesheets>
+        <URL value="@fxmltelaprincipal.css" />
+    </stylesheets>
+   <children>
+      <SplitPane dividerPositions="0.20951585976627712" layoutX="10.0" layoutY="100.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane fx:id="apMenuEsquerdo" maxHeight="600.0" maxWidth="165.0" minHeight="600.0" minWidth="165.0" prefHeight="600.0" prefWidth="165.0" style="-fx-background-color: #0F1214;">
+               <children>
+                  <VBox fx:id="vbMenuDireito" prefHeight="600.0" prefWidth="158.0" style="0x2A2A2A: #0F1214;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fx:id="imgLogotipo" fitHeight="50.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="btnHome" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#abrirHome" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Home" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="24.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAtendimentos" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#AbrirAtendimentos" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Atendimentos" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnAgendamentos" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#abrirAgendamentos" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Agendamentos" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnCadastros" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#abrirCadastros" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Cadastros" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnPesquisas" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#abrirPesquisas" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Pesquisas" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnRelatorios" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#abrirRelatorios" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Relatórios" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnPagamentos" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#abrirPagamentos" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Pagamentos" textFill="#e1dbdb">
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnSair" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#fecharAplicacao" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #2A2A2A;" text="Sair" textFill="RED">
+                           <font>
+                              <Font name="Century Gothic" size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="apMenuDireito" maxHeight="600.0" maxWidth="800.0" minHeight="515.0" minWidth="361.0" prefHeight="597.0" prefWidth="445.0" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
