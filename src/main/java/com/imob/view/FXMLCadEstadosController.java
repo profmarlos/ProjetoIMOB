@@ -1,7 +1,7 @@
 package com.imob.view;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
+//import com.jfoenix.controls.JFXButton;
+//import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -33,6 +33,7 @@ import com.imob.model.domain.Estados;
  */
 public class FXMLCadEstadosController implements Initializable {
 
+    /*
     @FXML
     private AnchorPane apPrincipal;
     @FXML
@@ -64,25 +65,28 @@ public class FXMLCadEstadosController implements Initializable {
     private List<Estados> listEstados;
     //jogar  na ViemTable com o ObservableList, é necessário usar
     private ObservableList<Estados> observableEstados;
-    
+    */
     //Atributos para manipulação de Banco de Dados
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
     private final EstadosDAO estadosDAO = new EstadosDAO();
-    
+
+
+
 
     /**
      * Initializes the controller class.
      */
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
         //conexão com o banco de dados
         estadosDAO.setConnection(connection);
         
-        carregaEstadosNaTableView();
+        //carregaEstadosNaTableView();
     } 
-    
+    /*
     //método para poder trabalhar com os Estados no banco
     public void carregaEstadosNaTableView()
     {
@@ -170,5 +174,7 @@ public class FXMLCadEstadosController implements Initializable {
         
         carregaEstadosNaTableView();
     }
-    
+
+
+     */
 }

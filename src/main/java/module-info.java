@@ -12,7 +12,7 @@ module com.imob {
     requires com.almasb.fxgl.all;
     requires java.logging;
     requires java.sql;
-    requires com.jfoenix;
+    //requires com.jfoenix;
 
     opens com.imob.view to javafx.fxml;
     opens com.imob.model.domain to javafx.fxml;
