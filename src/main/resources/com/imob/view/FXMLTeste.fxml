@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchoPane" fx:id="apTeste" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLTesteController">
+<AnchorPane id="AnchoPane" fx:id="apTeste" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLTesteController">
    <children>
       <Pane maxHeight="180.0" maxWidth="800.0" minHeight="180.0" minWidth="800.0" prefHeight="180.0" prefWidth="800.0" style="-fx-background-color: #0F1214;">
          <children>
@@ -40,6 +35,19 @@
                   <Font size="15.0" />
                </font>
             </Button>
+            <Button fx:id="btnEdita" layoutX="157.0" layoutY="383.0" mnemonicParsing="false" onAction="#atualizarDadosSelecionados" text="ATUALIZAR">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDeletar" layoutX="285.0" layoutY="386.0" mnemonicParsing="false" onAction="#deletarDadosSelecionados" text="DELETAR">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btnLimpar" layoutX="401.0" layoutY="386.0" mnemonicParsing="false" onAction="#limparCampos" text="LIMPAR">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>
