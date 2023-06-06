@@ -89,18 +89,13 @@ public class FXMLTesteController implements Initializable {
     @FXML
     private void inserirDadosNoBancoDados(ActionEvent event) {
         Estados estados = new Estados();
-
         estados.setNome_Estado(txtNomeEstado.getText());
         estados.setSigla_Estado(txtSiglaEstado.getText());
-
         estadosDAO.inserir(estados);
-
-
         limparCampos();
-
         carregaEstadosNaTableView();
     }
-
+    @FXML
     public void limparCampos()
     {
         txtCodigoEstado.setText("");
@@ -110,11 +105,27 @@ public class FXMLTesteController implements Initializable {
 
     @FXML
     private void selecionarLinhaViewTable(MouseEvent event) {
-
         txtCodigoEstado.setText(String.valueOf(tbEstados.getSelectionModel().getSelectedItem().getId_Estado()));
         txtNomeEstado.setText(tbEstados.getSelectionModel().getSelectedItem().getNome_Estado());
         txtSiglaEstado.setText(tbEstados.getSelectionModel().getSelectedItem().getSigla_Estado());
-
+    }
+    @FXML
+    private void deletarDadosSelecionados(ActionEvent event) {
+        Estados estados = new Estados();
+        estados.setId_Estado(Integer.parseInt(txtCodigoEstado.getText()));
+        estadosDAO.remover(estados);
+        limparCampos();
+        carregaEstadosNaTableView();
+    }
+    @FXML
+    private void atualizarDadosSelecionados(ActionEvent event) {
+        Estados estados = new Estados();
+        estados.setNome_Estado(txtNomeEstado.getText());
+        estados.setSigla_Estado(txtSiglaEstado.getText());
+        estados.setId_Estado(Integer.parseInt(txtCodigoEstado.getText()));
+        estadosDAO.alterar(estados);
+        limparCampos();
+        carregaEstadosNaTableView();
     }
 
 }
