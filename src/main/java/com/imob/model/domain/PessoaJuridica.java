@@ -114,10 +114,43 @@ public class PessoaJuridica extends Pessoa {
     public void setStatus_Cadastro(String status_Cadastro) {
         this.status_Cadastro = status_Cadastro;
     }
-    
-  
-    
-    
-    
-    
-}
+
+    public void setRazaoSocial_PJ(String nome_RazaoSocial) {
+        this.razao_Social = nome_RazaoSocial;
+    }
+     public void setNomeFantasia_PJ(String nome_Fantasia) {
+        this.nome_Fantasia = nome_Fantasia;
+    }
+     public void setCnpj_PJ(String cnpj) {
+        this.cnpj = cnpj;
+    }
+     public void setInscricaoEstadual_PJ(String inscricao_Estadual) {
+        this.inscricao_Estadual = inscricao_Estadual;
+    }
+     public void setIsentoInscEstadual_PJ(String isento_Inscricao_estadual) {
+        this.inscricao_Estadual = isento_Inscricao_estadual;
+    }
+    public void setSiglaAtividadePrincipal_PJ(String atividade_Principal) {
+        this.atividade_Principal = atividade_Principal;
+    }
+    public void setAtividadesSecundarias_PJ(String atividades_Secundarias) {
+        this.atividades_Secundarias = atividades_Secundarias;
+    }
+    public void setData_PJ(Date data_pj) {
+        this.data_Abertura = data_pj;
+    }
+    public void setAnotacoes_PJ(String anotacoesPj) {
+        this.anotacoes = anotacoesPj;
+    }
+
+    public void setStatusCadastro_PJ(String statusCadastroPj) {
+        this.status_Cadastro = statusCadastroPj;
+    }
+
+
+
+
+
+
+
+    }
