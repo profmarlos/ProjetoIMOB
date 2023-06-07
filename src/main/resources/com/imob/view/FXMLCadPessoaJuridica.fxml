@@ -6,13 +6,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCadPessoaJuridica">
    <children>
       <TableView layoutX="14.0" layoutY="18.0" prefHeight="356.0" prefWidth="419.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="colunarazaoSocial" prefWidth="27.0" text="Razão Social" />
+          <TableColumn fx:id="colunanomeFantasia" prefWidth="30.0" text="Nome Fantasia" />
+            <TableColumn fx:id="colunacnpj"  prefWidth="32.0" text="CNPJ" />
+            <TableColumn fx:id="colunainscEstadual"  prefWidth="46.0" text="Insc. Estadual" />
+            <TableColumn fx:id="colunaisentoInscEstadual"  prefWidth="27.0" text="Isen to Ins. Estadual" />
+            <TableColumn fx:id="colunaatividadePrincipal"  prefWidth="38.0" text="Atividade principal" />
+            <TableColumn fx:id="colunaatividadeSecundaria"  prefWidth="50.0" text="Atividade secundaria" />
+            <TableColumn fx:id="colunadataAbertura"  prefWidth="47.0" text="Data de abertura" />
+            <TableColumn fx:id="colunaobservacao"  prefWidth="60.0" text="Observação" />
+            <TableColumn fx:id="colunastatusCadastro"  prefWidth="61.0" text="Status Cadastro" />
         </columns>
       </TableView>
       <Button layoutX="454.0" layoutY="343.0" mnemonicParsing="false" text="INSERIR" />
