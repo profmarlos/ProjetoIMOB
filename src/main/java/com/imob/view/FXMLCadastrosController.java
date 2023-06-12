@@ -137,6 +137,29 @@ public class FXMLCadastrosController implements Initializable {
     }
 
     @FXML
+    private void abrirFXMLImoveisRurais(ActionEvent event){
+        try
+        {
+
+            Stage stageCadImoveisRu = new Stage();
+
+            Parent rootCadImoveisRu = FXMLLoader.load(getClass().getResource("FXMLCadImoveisRurais.fxml"));
+
+            Scene sceneCadImoveisRu = new Scene(rootCadImoveisRu);
+
+            //para retirar todos os botões de minimizar, maximizar e fechar
+            stageCadImoveisRu.initStyle(StageStyle.UNDECORATED);
+
+            stageCadImoveisRu.setScene(sceneCadImoveisRu);
+
+            stageCadImoveisRu.show();//abria a stage
+        }catch (IOException ex){
+            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+    @FXML
     private void abrirFXMLTeste(ActionEvent event){
         try
         {
