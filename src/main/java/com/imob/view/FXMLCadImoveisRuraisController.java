@@ -3,30 +3,43 @@ package com.imob.view;
 import com.imob.model.dao.ImoveisRuraisDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
+import com.imob.model.domain.Estados;
 import com.imob.model.domain.ImovelRural;
+import eu.hansolo.toolbox.unit.Converter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.sql.Connection;
+import java.text.ParseException;
 import java.util.List;
 import java.util.ResourceBundle;
-/*
-public class FXMLCadImoveisRuraisController {
+
+public class FXMLCadImoveisRuraisController implements Initializable {
 
     @FXML
     private TextField txtNumeroITR;
 
     @FXML
+    private TextField txtNumeroIncra;
+
+    @FXML
+    private TextField txtIdImovel;
+
+    @FXML
     private TableColumn<ImovelRural, String> colunaNumeroITR;
     @FXML
     private TableColumn<ImovelRural, String> colunaNumeroIncra;
+
+    @FXML
+    private TableColumn<ImovelRural, String> colunaNumeroIDImovel;
 
     @FXML
     private TableView<ImovelRural> tbImoveisRurais;
@@ -46,12 +59,18 @@ public class FXMLCadImoveisRuraisController {
         imoveisRuraisDAO.setConnection(connection);
 
         carregaImoveisRuraisNaTableView();
+        System.out.println("Controlador inicializado");
     }
 
     public void carregaImoveisRuraisNaTableView() {
-        colunaNumeroITR.setCellValueFactory(new PropertyValueFactory<>("numero_Itr"));
+        colunaNumeroITR.setCellValueFactory(new PropertyValueFactory<>("numeto_Itr"));
         colunaNumeroIncra.setCellValueFactory(new PropertyValueFactory<>("numero_Incra"));
+        colunaNumeroIDImovel.setCellValueFactory(new PropertyValueFactory<>("id_Imovel_R"));
+
+        listImoveisRurais = imoveisRuraisDAO.lista();
+
         observableImoveisRurais = FXCollections.observableArrayList(listImoveisRurais);
+
         tbImoveisRurais.setItems(observableImoveisRurais);
     }
 
@@ -65,8 +84,9 @@ public class FXMLCadImoveisRuraisController {
     private void inserirDadosNoBancoDados(ActionEvent event) {
         ImovelRural imovelRural = new ImovelRural();
 
-        ImovelRural.setNumeto_Itr(txtNumeroITR.getText());
-
+        imovelRural.setNumeto_Itr(txtNumeroITR.getText());
+        imovelRural.setNumero_Incra((txtNumeroIncra.getText()));
+        imovelRural.setId_Imovel_R(Integer.parseInt(txtIdImovel.getText()));
 
         imoveisRuraisDAO.inserir(imovelRural);
 
@@ -75,11 +95,10 @@ public class FXMLCadImoveisRuraisController {
     }
 
     @FXML
-    private void deletarDadosSelecionados(ActionEvent event) {
+    private void deletarInformacoesNoBanco(ActionEvent event) {
         ImovelRural imovelRural = new ImovelRural();
 
-        ImovelRural.setNumeto_Itr(Integer.parseInt(txtNumeroITR.getText()));
-
+        imovelRural.setNumeto_Itr(txtNumeroITR.getText());
 
         imoveisRuraisDAO.remover(imovelRural);
 
@@ -90,11 +109,11 @@ public class FXMLCadImoveisRuraisController {
     }
 
     @FXML
-    private void atualizarDadosSelecionados(ActionEvent event) {
+    private void atualizarDadosNoBanco(ActionEvent event) {
 
         ImovelRural imovelRural = new ImovelRural();
 
-        ImovelRural.setNumeto_Itr(txtNumeroITR.getText());
+        imovelRural.setNumeto_Itr(txtNumeroITR.getText());
 
         imoveisRuraisDAO.alterar(imovelRural);
 
@@ -106,8 +125,9 @@ public class FXMLCadImoveisRuraisController {
 
     public void limparCampos() {
         txtNumeroITR.setText("");
+        txtNumeroIncra.setText("");
 
     }
 
 }
- */
+
