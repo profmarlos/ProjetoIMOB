@@ -13,8 +13,8 @@ public class ImovelRural extends ImovelGeral {
     private String numeto_Itr;
     private String numero_Incra;
     private String unidade_area_imovel_rural;
-    private int area_App;
-    private int area_Utilizavel;
+    private String area_App;
+    private String area_Utilizavel;
     private String tem_Curral;
     private String tem_Casa_sede;
     private String tem_Casa_Funcionarios;
@@ -58,20 +58,19 @@ public class ImovelRural extends ImovelGeral {
     public void setUnidade_area_imovel_rural(String unidade_area_imovel_rural) {
         this.unidade_area_imovel_rural = unidade_area_imovel_rural;
     }
-
-    public int getArea_App() {
+    public String getArea_App() {
         return area_App;
     }
 
-    public void setArea_App(int area_App) {
+    public void setArea_App(String area_App) {
         this.area_App = area_App;
     }
 
-    public int getArea_Utilizavel() {
+    public String getArea_Utilizavel() {
         return area_Utilizavel;
     }
 
-    public void setArea_Utilizavel(int area_Utilizavel) {
+    public void setArea_Utilizavel(String area_Utilizavel) {
         this.area_Utilizavel = area_Utilizavel;
     }
 

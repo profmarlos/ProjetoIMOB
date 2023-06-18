@@ -28,6 +28,9 @@ public class ImoveisRuraisDAO {
             stmt.setString(1, imoveisRurais.getNumeto_Itr());
             stmt.setString(2, imoveisRurais.getNumero_Incra());
             stmt.setInt(3, imoveisRurais.getId_Imovel_R());
+            stmt.setString(4, imoveisRurais.getUnidade_area_imovel_rural());
+            stmt.setString(5, imoveisRurais.getArea_Utilizavel());
+            stmt.setString(6, imoveisRurais.getArea_App());
 
             stmt.execute();
 
@@ -49,6 +52,9 @@ public class ImoveisRuraisDAO {
                 stmt.setString(1, imoveisRurais.getNumeto_Itr());
                 stmt.setString(2, imoveisRurais.getNumero_Incra());
                 stmt.setInt(3, imoveisRurais.getId_Imovel_R());
+                stmt.setString(4, imoveisRurais.getUnidade_area_imovel_rural());
+                stmt.setString(5, imoveisRurais.getArea_Utilizavel());
+                stmt.setString(6, imoveisRurais.getArea_App());
 
                 System.out.println("UPDATE ID: " + imoveisRurais.getId_Imovel_R());
 
@@ -101,12 +107,13 @@ public class ImoveisRuraisDAO {
                 imovelRural.setNumero_Incra(resultado.getString("numero_Incra"));
                 imovelRural.setId_imovel_geral(resultado.getInt("tb_imovel_geral_id_Imovel"));
                 imovelRural.setId_Imovel_R(resultado.getInt("id_Imovel_R"));
+                imovelRural.setUnidade_area_imovel_rural(resultado.getString("unidade_area_imovel_rural"));
+                imovelRural.setArea_App(resultado.getString("area_App"));
+                imovelRural.setArea_Utilizavel(resultado.getString("area_Utilizavel"));
 
 
-                //vamos adicionando a lista retorno
                 retorno.add(imovelRural);
             }
-
 
         }
         catch(SQLException ex)
