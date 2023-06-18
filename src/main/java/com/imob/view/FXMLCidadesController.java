@@ -1,7 +1,10 @@
 package com.imob.view;
 
 import com.imob.model.dao.CidadesDAO;
+import com.imob.model.database.Database;
+import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Cidades;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
@@ -17,8 +20,15 @@ import java.util.ResourceBundle;
  */
 public class FXMLCidadesController implements Initializable {
 
-    private CidadesDAO cidadeDAO;
+    private final Database database = DatabaseFactory.getDatabase("mysql");
+    private final Connection connection = database.conectar();
+    private CidadesDAO cidadeDAO = new CidadesDAO(connection);
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        cidadeDAO.setConnection(connection);
+    }
     // Construtor
     public FXMLCidadesController() {
         // Configurar conexão com o banco de dados
@@ -33,7 +43,7 @@ public class FXMLCidadesController implements Initializable {
             System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
         }
     }
-
+    @FXML
     // Método para adicionar uma nova cidade
     public void adicionarCidades(int id_Cidades, String nome_Cidades, int id_Estado) {
         Cidades cidade = new Cidades(id_Cidades, nome_Cidades, id_Estado);
@@ -45,7 +55,7 @@ public class FXMLCidadesController implements Initializable {
             System.out.println("Erro ao adicionar cidade: " + e.getMessage());
         }
     }
-
+    @FXML
     // Método para atualizar uma cidade existente
     public void atualizarCidades(int id_Cidades, String nome_Cidades, int id_Estado) {
         Cidades cidade = new Cidades(id_Cidades, nome_Cidades, id_Estado);
@@ -57,7 +67,7 @@ public class FXMLCidadesController implements Initializable {
             System.out.println("Erro ao atualizar cidade: " + e.getMessage());
         }
     }
-
+    @FXML
     // Método para excluir uma cidade
     public void excluirCidades(int id_Cidades) {
         try {
@@ -67,7 +77,7 @@ public class FXMLCidadesController implements Initializable {
             System.out.println("Erro ao excluir cidade: " + e.getMessage());
         }
     }
-
+    @FXML
     // Método para buscar todas as cidades
     public List<Cidades> buscarTodasCidades() {
         try {
@@ -77,8 +87,5 @@ public class FXMLCidadesController implements Initializable {
             return null;
         }
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
 }

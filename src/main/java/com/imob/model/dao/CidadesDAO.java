@@ -2,6 +2,7 @@ package com.imob.model.dao;
 
 import com.imob.model.domain.Cidades;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,22 +10,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-    /**
-     *
-     * @author
-     */
-
     public class CidadesDAO {
+
         private Connection connection;
 
-        // Construtor
         public CidadesDAO(Connection connection) {
+                this.connection = this.connection;
+        }
+
+        public Connection getConnection() {
+            return connection;
+        }
+
+        public void setConnection(Connection connection) {
             this.connection = connection;
         }
 
+
+
+        // Construtor
+
+
         // Método para inserir uma nova cidade no banco de dados
-        public void inserirCidades(Cidades cidade) throws SQLException {
-            String sql = "INSERT INTO cidade (id_Cidades, nome_Cidades, id_Estado) VALUES (?, ?, ?)";
+        public boolean inserirCidades(Cidades cidade) throws SQLException {
+            String sql = "INSERT INTO tb_cidades (id_Cidades, nome_Cidades, id_Estado) VALUES (?, ?, ?)";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, cidade.getId_Cidades());
@@ -32,9 +41,13 @@ import java.util.List;
                 statement.setInt(3, cidade.getId_Estado());
 
                 statement.executeUpdate();
+                return true;
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Não foi possível inserir no banco: " + ex);
+                return false;
             }
         }
-
         // Método para atualizar uma cidade existente no banco de dados
         public void atualizarCidades(Cidades cidade) throws SQLException {
             String sql = "UPDATE cidade SET nome_Cidades = ?, id_Estado = ? WHERE id_Cidades = ?";
