@@ -15,7 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
-import java.awt.event.MouseEvent;
+import javafx.scene.input.MouseEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.text.ParseException;
@@ -31,6 +31,8 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     private TextField txtNumeroIncra;
 
     @FXML
+    private TextField txtImovelGeralIdImovel;
+    @FXML
     private TextField txtIdImovel;
 
     @FXML
@@ -39,7 +41,9 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     private TableColumn<ImovelRural, String> colunaNumeroIncra;
 
     @FXML
-    private TableColumn<ImovelRural, String> colunaNumeroIDImovel;
+    private TableColumn<ImovelRural, String> colunaImovelGeralIDImovel;
+    @FXML
+    private TableColumn<ImovelRural, String> colunaIdImovel;
 
     @FXML
     private TableView<ImovelRural> tbImoveisRurais;
@@ -65,7 +69,9 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     public void carregaImoveisRuraisNaTableView() {
         colunaNumeroITR.setCellValueFactory(new PropertyValueFactory<>("numeto_Itr"));
         colunaNumeroIncra.setCellValueFactory(new PropertyValueFactory<>("numero_Incra"));
-        colunaNumeroIDImovel.setCellValueFactory(new PropertyValueFactory<>("id_Imovel_R"));
+        colunaImovelGeralIDImovel.setCellValueFactory(new PropertyValueFactory<>("id_imovel_geral"));
+        colunaIdImovel.setCellValueFactory(new PropertyValueFactory<>("id_Imovel_R"));
+
 
         listImoveisRurais = imoveisRuraisDAO.lista();
 
@@ -78,6 +84,13 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     private void selecionarLinhaViewTable(MouseEvent event) {
 
         txtNumeroITR.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getNumeto_Itr()));
+        txtNumeroIncra.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getNumero_Incra()));
+        txtImovelGeralIdImovel.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getId_imovel_geral()));
+        txtIdImovel.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getId_Imovel_R()));
+
+        //txtCodigoEstado.setText(String.valueOf(tbEstados.getSelectionModel().getSelectedItem().getId_Estado()));
+        //txtNomeEstado.setText(tbEstados.getSelectionModel().getSelectedItem().getNome_Estado());
+        //txtSiglaEstado.setText(tbEstados.getSelectionModel().getSelectedItem().getSigla_Estado());
     }
 
     @FXML
@@ -86,7 +99,7 @@ public class FXMLCadImoveisRuraisController implements Initializable {
 
         imovelRural.setNumeto_Itr(txtNumeroITR.getText());
         imovelRural.setNumero_Incra((txtNumeroIncra.getText()));
-        imovelRural.setId_Imovel_R(Integer.parseInt(txtIdImovel.getText()));
+        imovelRural.setId_Imovel_R(Integer.parseInt(txtImovelGeralIdImovel.getText()));
 
         imoveisRuraisDAO.inserir(imovelRural);
 
@@ -98,7 +111,7 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     private void deletarInformacoesNoBanco(ActionEvent event) {
         ImovelRural imovelRural = new ImovelRural();
 
-        imovelRural.setNumeto_Itr(txtNumeroITR.getText());
+        imovelRural.setId_Imovel_R(Integer.parseInt(txtIdImovel.getText()));
 
         imoveisRuraisDAO.remover(imovelRural);
 
@@ -113,10 +126,11 @@ public class FXMLCadImoveisRuraisController implements Initializable {
 
         ImovelRural imovelRural = new ImovelRural();
 
+        imovelRural.setId_Imovel_R(Integer.parseInt(txtIdImovel.getText()));
         imovelRural.setNumeto_Itr(txtNumeroITR.getText());
+        imovelRural.setNumero_Incra(txtNumeroIncra.getText());
 
         imoveisRuraisDAO.alterar(imovelRural);
-
 
         limparCampos();
 
@@ -126,8 +140,11 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     public void limparCampos() {
         txtNumeroITR.setText("");
         txtNumeroIncra.setText("");
+        txtImovelGeralIdImovel.setText("");
+        txtIdImovel.setText("");
 
     }
+
 
 }
 

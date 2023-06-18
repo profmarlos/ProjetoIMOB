@@ -21,8 +21,11 @@ public class ImovelRural extends ImovelGeral {
     private String tem_Represa;
     private String tem_Rio;
     private String tem_Poco;
-    
-    //set e get
+
+    private int id_imovel_geral;
+
+
+//set e get
 
     public int getId_Imovel_R() {
         return id_Imovel_R;
@@ -119,5 +122,14 @@ public class ImovelRural extends ImovelGeral {
     public void setTem_Poco(String tem_Poco) {
         this.tem_Poco = tem_Poco;
     }
+
+    public int getId_imovel_geral() {
+        return id_imovel_geral;
+    }
+
+    public void setId_imovel_geral(int id_imovel_geral) {
+        this.id_imovel_geral = id_imovel_geral;
+    }
+
     
 }
