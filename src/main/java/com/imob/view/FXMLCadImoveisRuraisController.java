@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,6 +25,8 @@ import java.util.ResourceBundle;
 
 public class FXMLCadImoveisRuraisController implements Initializable {
 
+    ObservableList<String> choiceList = FXCollections.observableArrayList("Sim", "Não");
+
     @FXML
     private TextField txtNumeroITR;
 
@@ -34,7 +37,18 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     private TextField txtImovelGeralIdImovel;
     @FXML
     private TextField txtIdImovel;
-
+    @FXML
+    private ChoiceBox chcTemCurral;
+    @FXML
+    private ChoiceBox chcTemCasaSede;
+    @FXML
+    private ChoiceBox chcTemCasaFuncionario;
+    @FXML
+    private ChoiceBox chcTemRepresa;
+    @FXML
+    private ChoiceBox chcTemRio;
+    @FXML
+    private ChoiceBox chcTemPoco;
     @FXML
     private TableColumn<ImovelRural, String> colunaNumeroITR;
     @FXML
@@ -61,6 +75,13 @@ public class FXMLCadImoveisRuraisController implements Initializable {
 
         //conexão com o banco de dados
         imoveisRuraisDAO.setConnection(connection);
+
+        chcTemCurral.setItems(choiceList);
+        chcTemCasaSede.setItems(choiceList);
+        chcTemCasaFuncionario.setItems(choiceList);
+        chcTemRepresa.setItems(choiceList);
+        chcTemRio.setItems(choiceList);
+        chcTemPoco.setItems(choiceList);
 
         carregaImoveisRuraisNaTableView();
         System.out.println("Controlador inicializado");
