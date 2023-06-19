@@ -1,4 +1,4 @@
-/*package com.imob.view;
+package com.imob.view;
 import com.imob.model.dao.ImoveisRuraisDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
@@ -7,13 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.util.List;
@@ -61,6 +60,8 @@ public class FXMLCadImoveisRuraisController implements Initializable {
 
     @FXML
     private ChoiceBox chcTemPoco;
+    @FXML
+    private Label lblFecharCadImoveisRurais;
 
     @FXML
     private TableColumn<ImovelRural, String> colunaNumeroITR;
@@ -75,15 +76,28 @@ public class FXMLCadImoveisRuraisController implements Initializable {
     private TableColumn<ImovelRural, String> colunaIdImovel;
 
     @FXML
-    private TableColumn<ImovelRural>, String> colunaAreaImovelRural;
+    private TableColumn<ImovelRural, String> colunaAreaImovelRural;
 
     @FXML
-    private TableColumn<ImovelRural>, String> colunaAreaApp;
+    private TableColumn<ImovelRural, String> colunaAreaApp;
 
     @FXML
-    private TableColumn<ImovelRural>, String> colunaAreaUtilizavel;
+    private TableColumn<ImovelRural, String> colunaAreaUtilizavel;
+    @FXML
+    private TableColumn<ImovelRural, String> colunaTemCurral;
+
+    @FXML
+    private TableColumn<ImovelRural, String> colunaTemCasaSede;
+    @FXML
+    private TableColumn<ImovelRural, String> colunaTemcasaDosFuncionarios;
+    @FXML
+    private TableColumn<ImovelRural, String> colunaTemRepresa;
+    @FXML
+    private TableColumn<ImovelRural, String> colunaTemRio;
+    @FXML
+    private TableColumn<ImovelRural, String> colunaTemPoco;
+    @FXML
     private TableView<ImovelRural> tbImoveisRurais;
-
 
     private List<ImovelRural> listImoveisRurais;
 
@@ -116,8 +130,14 @@ public class FXMLCadImoveisRuraisController implements Initializable {
         colunaIdImovel.setCellValueFactory(new PropertyValueFactory<>("id_Imovel_R"));
         colunaAreaImovelRural.setCellValueFactory(new PropertyValueFactory<>("unidade_area_imovel_rural"));
         colunaAreaApp.setCellValueFactory(new PropertyValueFactory<>("area_App"));
-        colunaAreaUtilizavel.setCellValueFactory(new PropertyValueFactory<>(" area_Utilizavel"));
+        colunaAreaUtilizavel.setCellValueFactory(new PropertyValueFactory<>("area_Utilizavel"));
+        colunaTemCurral.setCellValueFactory(new PropertyValueFactory<>("tem_Curral"));
 
+        colunaTemCasaSede.setCellValueFactory(new PropertyValueFactory<>("tem_Casa_sede"));
+        colunaTemcasaDosFuncionarios.setCellValueFactory(new PropertyValueFactory<>("tem_Casa_Funcionarios"));
+        colunaTemRepresa.setCellValueFactory(new PropertyValueFactory<>("tem_Represa"));
+        colunaTemRio.setCellValueFactory(new PropertyValueFactory<>("tem_Rio"));
+        colunaTemPoco.setCellValueFactory(new PropertyValueFactory<>("tem_Poco"));
 
         listImoveisRurais = imoveisRuraisDAO.lista();
 
@@ -136,6 +156,22 @@ public class FXMLCadImoveisRuraisController implements Initializable {
         txtAreaImovelRural.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getUnidade_area_imovel_rural()));
         txtAreaUtilizavel.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getArea_Utilizavel()));
         txtAreaApp.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getArea_App()));
+        chcTemCurral.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Curral()));
+
+        chcTemCasaSede.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Casa_sede()));
+        chcTemCasaFuncionario.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Casa_Funcionarios()));
+        chcTemRepresa.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Represa()));
+        chcTemRio.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Rio()));
+        chcTemPoco.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Poco()));
+
+
+    }
+
+    @FXML
+    private void fecharCadImoveisRurais(MouseEvent event) {
+
+        Stage st = (Stage) lblFecharCadImoveisRurais.getScene().getWindow();// obtem a janela atual
+        st.close();//fecha a stage
     }
 
     @FXML
@@ -143,11 +179,38 @@ public class FXMLCadImoveisRuraisController implements Initializable {
         ImovelRural imovelRural = new ImovelRural();
 
         imovelRural.setNumeto_Itr(txtNumeroITR.getText());
-        imovelRural.setNumero_Incra((txtNumeroIncra.getText()));
+        imovelRural.setNumero_Incra(txtNumeroIncra.getText());
         imovelRural.setId_Imovel_R(Integer.parseInt(txtImovelGeralIdImovel.getText()));
-        imovelRural.setUnidade_area_imovel_rural((txtAreaImovelRural.getText()));
-        imovelRural.setArea_App((txtAreaApp.getText()));
-        imovelRural.setArea_Utilizavel((txtAreaUtilizavel.getText()));
+        imovelRural.setUnidade_area_imovel_rural(txtAreaImovelRural.getText());
+        imovelRural.setArea_App(txtAreaApp.getText());
+        imovelRural.setArea_Utilizavel(txtAreaUtilizavel.getText());
+        imovelRural.setTem_Curral(chcTemCurral.getValue().toString());
+        imovelRural.setTem_Casa_sede(chcTemCasaSede.getValue().toString());
+        imovelRural.setTem_Casa_Funcionarios(chcTemCasaFuncionario.getValue().toString());
+        imovelRural.setTem_Represa(chcTemRepresa.getValue().toString());
+        imovelRural.setTem_Rio(chcTemRio.getValue().toString());
+        imovelRural.setTem_Poco(chcTemPoco.getValue().toString());
+
+        String textoAreaApp = txtAreaApp.getText();
+        if (!isNumeroInteiroValido(textoAreaApp)) {
+            exibirMensagemErro("Erro de validação", "Insira um número inteiro válido no campo Área APP.");
+            txtAreaApp.clear();
+            return; // Interrompe a execução do método aqui
+        }
+
+        String textoAreaUtilizavel= txtAreaUtilizavel.getText();
+        if (!isNumeroInteiroValido(textoAreaUtilizavel)) {
+            exibirMensagemErro("Erro de validação", "Insira um número inteiro válido no campo Área Utilizável.");
+            txtAreaUtilizavel.clear();
+            return; // Interrompe a execução do método aqui
+        }
+
+        String textoImovelGeralID= txtImovelGeralIdImovel.getText();
+        if (!isNumeroInteiroValido(textoImovelGeralID)) {
+            exibirMensagemErro("Erro de validação", "Insira um número inteiro válido no Campo Id Imovel Geral.");
+            txtImovelGeralIdImovel.clear();
+            return; // Interrompe a execução do método aqui
+        }
 
         imoveisRuraisDAO.inserir(imovelRural);
 
@@ -180,12 +243,40 @@ public class FXMLCadImoveisRuraisController implements Initializable {
         imovelRural.setUnidade_area_imovel_rural((txtAreaImovelRural.getText()));;
         imovelRural.setArea_App((txtAreaApp.getText()));
         imovelRural.setArea_Utilizavel((txtAreaUtilizavel.getText()));
+        imovelRural.setTem_Curral(chcTemCurral.getValue().toString());
+        imovelRural.setTem_Casa_sede(chcTemCasaSede.getValue().toString());
+        imovelRural.setTem_Casa_Funcionarios(chcTemCasaFuncionario.getValue().toString());
+        imovelRural.setTem_Represa(chcTemRepresa.getValue().toString());
+        imovelRural.setTem_Rio(chcTemRio.getValue().toString());
+        imovelRural.setTem_Poco(chcTemPoco.getValue().toString());
+
+        String textoAreaApp = txtAreaApp.getText();
+        if (!isNumeroInteiroValido(textoAreaApp)) {
+            exibirMensagemErro("Erro de validação", "Insira um número inteiro válido no campo Área APP.");
+            txtAreaApp.clear();
+            return; // Interrompe a execução do método aqui
+        }
+
+        String textoAreaUtilizavel= txtAreaUtilizavel.getText();
+        if (!isNumeroInteiroValido(textoAreaUtilizavel)) {
+            exibirMensagemErro("Erro de validação", "Insira um número inteiro válido no campo Área Utilizável.");
+            txtAreaUtilizavel.clear();
+            return; // Interrompe a execução do método aqui
+        }
+
+        if (!txtImovelGeralIdImovel.getText().isEmpty() || !txtIdImovel.getText().isEmpty()) {
+            exibirMensagemErro("Erro de validação", "Esse campo NÃO pode ser alterado.");
+            return;
+        }
+
+
+
 
         imoveisRuraisDAO.alterar(imovelRural);
-
         limparCampos();
-
         carregaImoveisRuraisNaTableView();
+
+
     }
 
     public void limparCampos() {
@@ -196,9 +287,29 @@ public class FXMLCadImoveisRuraisController implements Initializable {
         txtAreaImovelRural.setText("");
         txtAreaApp.setText("");
         txtAreaUtilizavel.setText("");
+        chcTemCurral.setValue("");
+        chcTemCasaSede.setValue("");
+        chcTemCasaFuncionario.setValue("");
+        chcTemRepresa.setValue("");
+        chcTemRio.setValue("");
+        chcTemPoco.setValue("");
     }
 
+    private boolean isNumeroInteiroValido(String texto) {
+        try {
+            Integer.parseInt(texto);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private void exibirMensagemErro(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
+    }
 
 }
-
-*/
