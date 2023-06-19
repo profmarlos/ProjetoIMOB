@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="470.0" prefWidth="793.0" style="-fx-background-color: #3090c7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCidadesController">
+    <children>
+        <TextField fx:id="IdCodCidade" layoutX="178.0" layoutY="96.0" />
+        <TextField fx:id="IdCidade" layoutX="471.0" layoutY="96.0" />
+        <TableView fx:id="IdTabela" layoutY="164.0" prefHeight="185.0" prefWidth="793.0" style="-fx-background-color: ;">
+            <columns>
+                <TableColumn fx:id="TableCodCidade" prefWidth="211.0" text="COD  CIDADE" />
+                <TableColumn fx:id="Tablecidade" minWidth="0.0" prefWidth="406.0" text="CIDADE " />
+                <TableColumn fx:id="colunaSiglaEstado" maxWidth="438.0" prefWidth="169.0" text="ESTADOS" />
+            </columns>
+        </TableView>
+        <Button fx:id="B_Insert" layoutX="115.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Inserir" textFill="WHITE" />
+        <Button fx:id="BAtualizar" layoutX="264.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Atualizar" textFill="WHITE" />
+        <Button fx:id="BDetalhar" layoutX="444.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Detalhar" textFill="WHITE" />
+        <Button fx:id="BDeletar" layoutX="593.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Deletar" textFill="WHITE" />
+        <Text fill="WHITE" layoutX="322.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CIDADES" textAlignment="CENTER" wrappingWidth="149.0">
+            <font>
+                <Font name="Dubai Medium" size="36.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
