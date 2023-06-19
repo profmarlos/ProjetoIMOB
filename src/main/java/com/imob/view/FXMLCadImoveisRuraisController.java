@@ -157,7 +157,6 @@ public class FXMLCadImoveisRuraisController implements Initializable {
         txtAreaUtilizavel.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getArea_Utilizavel()));
         txtAreaApp.setText(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getArea_App()));
         chcTemCurral.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Curral()));
-
         chcTemCasaSede.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Casa_sede()));
         chcTemCasaFuncionario.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Casa_Funcionarios()));
         chcTemRepresa.setValue(String.valueOf(tbImoveisRurais.getSelectionModel().getSelectedItem().getTem_Represa()));
@@ -180,7 +179,7 @@ public class FXMLCadImoveisRuraisController implements Initializable {
 
         imovelRural.setNumeto_Itr(txtNumeroITR.getText());
         imovelRural.setNumero_Incra(txtNumeroIncra.getText());
-        imovelRural.setId_Imovel_R(Integer.parseInt(txtImovelGeralIdImovel.getText()));
+        imovelRural.setId_imovel_geral(Integer.parseInt(txtImovelGeralIdImovel.getText()));
         imovelRural.setUnidade_area_imovel_rural(txtAreaImovelRural.getText());
         imovelRural.setArea_App(txtAreaApp.getText());
         imovelRural.setArea_Utilizavel(txtAreaUtilizavel.getText());
