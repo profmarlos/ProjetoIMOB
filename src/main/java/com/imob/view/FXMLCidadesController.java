@@ -6,6 +6,9 @@ import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Cidades;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -22,6 +25,8 @@ public class FXMLCidadesController implements Initializable {
 
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
+    @FXML
+    private Label lblFecharcidade;
     private CidadesDAO cidadeDAO = new CidadesDAO(connection);
 
     @Override
@@ -29,6 +34,16 @@ public class FXMLCidadesController implements Initializable {
 
         cidadeDAO.setConnection(connection);
     }
+
+    @FXML
+    private void fecharCidade(MouseEvent event) {
+
+        Stage st = (Stage) lblFecharcidade.getScene().getWindow();// obtem a janela atual
+        st.close();//fecha a stage
+    }
+
+
+
     // Construtor
     public FXMLCidadesController() {
         // Configurar conexão com o banco de dados

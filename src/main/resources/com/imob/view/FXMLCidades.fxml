@@ -9,7 +9,20 @@
 <?import javafx.scene.text.Text?>
 
 
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="470.0" prefWidth="793.0" style="-fx-background-color: #3090c7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCidadesController">
+    <children>
+    <Pane maxHeight="180.0" maxWidth="800.0" minHeight="180.0" minWidth="800.0" prefHeight="180.0" prefWidth="800.0" >
+        <children>
+            <Label fx:id="lblFecharcidade" layoutX="780.0" onMouseClicked="#fecharCidade" text="X" textFill="WHITE">
+                <font>
+                    <Font size="28.0" />
+                </font>
+            </Label>
+        </children>
+    </Pane>
+    </children>
     <children>
         <TextField fx:id="IdCodCidade" layoutX="178.0" layoutY="96.0" />
         <TextField fx:id="IdCidade" layoutX="471.0" layoutY="96.0" />
