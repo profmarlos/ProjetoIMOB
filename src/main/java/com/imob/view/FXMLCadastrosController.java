@@ -66,7 +66,7 @@ public class FXMLCadastrosController implements Initializable {
         {
             Stage stage = new Stage();
 
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLCadPF.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLCadPessoaFisica.fxml"));
 
             Scene scene = new Scene(root);
             
