@@ -24,6 +24,10 @@ public class Cidades extends Estados {
 
     }
 
+    public Cidades() {
+
+    }
+
     // Getters e Setters
     public int getId_Cidades() {
 

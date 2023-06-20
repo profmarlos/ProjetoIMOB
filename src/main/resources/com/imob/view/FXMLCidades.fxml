@@ -33,7 +33,7 @@
         </TableView>
         <Button fx:id="B_Insert" layoutX="115.0" layoutY="383.0" mnemonicParsing="false" onAction="#inserirDadosNoBancoDados" style="-fx-background-color: #0000a0;" text="Inserir" textFill="WHITE" />
         <Button fx:id="BAtualizar" layoutX="264.0" layoutY="383.0" mnemonicParsing="false" onAction="#atualizarDadosSelecionados" style="-fx-background-color: #0000a0;" text="Atualizar" textFill="WHITE" />
-        <Button fx:id="BLimpar" layoutX="444.0" layoutY="383.0" mnemonicParsing="false" onAction="#limparCampos" style="-fx-background-color: #0000a0;" text="Detalhar" textFill="WHITE" />
+        <Button fx:id="BLimpar" layoutX="444.0" layoutY="383.0" mnemonicParsing="false" onAction="#limparCampos" style="-fx-background-color: #0000a0;" text="Limpar" textFill="WHITE" />
         <Button fx:id="BDeletar" layoutX="593.0" layoutY="383.0" mnemonicParsing="false" onAction="#deletarDadosSelecionados" style="-fx-background-color: #0000a0;" text="Deletar" textFill="WHITE" />
         <Text fill="WHITE" layoutX="313.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CIDADES" textAlignment="CENTER" wrappingWidth="149.0">
             <font>

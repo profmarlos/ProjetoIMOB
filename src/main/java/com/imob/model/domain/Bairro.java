@@ -17,7 +17,7 @@ public class Bairro extends Cidades {
     }
 
     public Bairro() {
-        super(IdCodCidade, IdCidade, IdEstado);
+
     }
 
     //get e set
