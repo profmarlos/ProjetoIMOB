@@ -8,9 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.control.Label?>
-<AnchorPane prefHeight="470.0" prefWidth="793.0" style="-fx-background-color: #3090c7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCidadesController">
+<AnchorPane prefHeight="470.0" prefWidth="793.0" style="-fx-background-color: #3090c7;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCidadesController">
     <children>
     <Pane maxHeight="180.0" maxWidth="800.0" minHeight="180.0" minWidth="800.0" prefHeight="180.0" prefWidth="800.0">
         <children>
@@ -33,10 +31,10 @@
                 <TableColumn fx:id="colunaSiglaEstado" maxWidth="438.0" prefWidth="169.0" text="ESTADOS" />
             </columns>
         </TableView>
-        <Button fx:id="B_Insert" layoutX="115.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Inserir" textFill="WHITE" />
-        <Button fx:id="BAtualizar" layoutX="264.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Atualizar" textFill="WHITE" />
-        <Button fx:id="BDetalhar" layoutX="444.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Detalhar" textFill="WHITE" />
-        <Button fx:id="BDeletar" layoutX="593.0" layoutY="383.0" mnemonicParsing="false" style="-fx-background-color: #0000a0;" text="Deletar" textFill="WHITE" />
+        <Button fx:id="B_Insert" layoutX="115.0" layoutY="383.0" mnemonicParsing="false" onAction="#adicionarCidades" style="-fx-background-color: #0000a0;" text="Inserir" textFill="WHITE" />
+        <Button fx:id="BAtualizar" layoutX="264.0" layoutY="383.0" mnemonicParsing="false" onAction="#atualizarCidades" style="-fx-background-color: #0000a0;" text="Atualizar" textFill="WHITE" />
+        <Button fx:id="BDetalhar" layoutX="444.0" layoutY="383.0" mnemonicParsing="false" onAction="#buscarTodasCidades" style="-fx-background-color: #0000a0;" text="Detalhar" textFill="WHITE" />
+        <Button fx:id="BDeletar" layoutX="593.0" layoutY="383.0" mnemonicParsing="false" onAction="#excluirCidades" style="-fx-background-color: #0000a0;" text="Deletar" textFill="WHITE" />
         <Text fill="WHITE" layoutX="322.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CIDADES" textAlignment="CENTER" wrappingWidth="149.0">
             <font>
                 <Font name="Dubai Medium" size="36.0" />

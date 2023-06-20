@@ -28,7 +28,7 @@ public class main extends Application {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_imob","root","Matheus");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_imob","root","samuel06");
             return this.connection;
 
         }

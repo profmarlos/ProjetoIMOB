@@ -4,9 +4,12 @@ import com.imob.model.dao.CidadesDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Cidades;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -25,6 +28,22 @@ public class FXMLCidadesController implements Initializable {
 
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
+
+    @FXML
+    private TextField IdCodCidade;
+    @FXML
+    private TextField IdCidade;
+    @FXML
+    private TextField IdEstado;
+    @FXML
+    private Button B_Insert;
+    @FXML
+    private Button BAtualizar;
+    @FXML
+    private Button BDetalhar;
+    @FXML
+    private Button BDeletar;
+
     @FXML
     private Label lblFecharcidade;
     private CidadesDAO cidadeDAO = new CidadesDAO(connection);
@@ -48,8 +67,8 @@ public class FXMLCidadesController implements Initializable {
     public FXMLCidadesController() {
         // Configurar conexão com o banco de dados
         String url = "jdbc:mysql://localhost:3306/bd_imob";
-        String username = "seu_usuario";
-        String password = "sua_senha";
+        String username = "root";
+        String password = "samuel06";
 
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
@@ -60,8 +79,8 @@ public class FXMLCidadesController implements Initializable {
     }
     @FXML
     // Método para adicionar uma nova cidade
-    public void adicionarCidades(int id_Cidades, String nome_Cidades, int id_Estado) {
-        Cidades cidade = new Cidades(id_Cidades, nome_Cidades, id_Estado);
+    public void adicionarCidades(ActionEvent actionEvent) {
+        Cidades cidade = new Cidades(IdCodCidade, IdCidade, IdEstado);
 
         try {
             cidadeDAO.inserirCidades(cidade);
@@ -72,8 +91,8 @@ public class FXMLCidadesController implements Initializable {
     }
     @FXML
     // Método para atualizar uma cidade existente
-    public void atualizarCidades(int id_Cidades, String nome_Cidades, int id_Estado) {
-        Cidades cidade = new Cidades(id_Cidades, nome_Cidades, id_Estado);
+    public void atualizarCidades(ActionEvent actionEvent) {
+        Cidades cidade = new Cidades(IdCodCidade, IdCidade, IdEstado);
 
         try {
             cidadeDAO.atualizarCidades(cidade);
@@ -84,9 +103,9 @@ public class FXMLCidadesController implements Initializable {
     }
     @FXML
     // Método para excluir uma cidade
-    public void excluirCidades(int id_Cidades) {
+    public void excluirCidades(ActionEvent actionEvent) {
         try {
-            cidadeDAO.excluirCidade(id_Cidades);
+            cidadeDAO.excluirCidade(IdCidade);
             System.out.println("Cidade excluída com sucesso!");
         } catch (SQLException e) {
             System.out.println("Erro ao excluir cidade: " + e.getMessage());
@@ -102,5 +121,4 @@ public class FXMLCidadesController implements Initializable {
             return null;
         }
     }
-
 }

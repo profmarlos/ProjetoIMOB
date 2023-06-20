@@ -1,6 +1,7 @@
 package com.imob.model.dao;
 
 import com.imob.model.domain.Cidades;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -62,7 +63,7 @@ import java.util.List;
         }
 
         // Método para excluir uma cidade do banco de dados
-        public void excluirCidade(int id_Cidades) throws SQLException {
+        public void excluirCidade(TextField id_Cidades) throws SQLException {
             String sql = "DELETE FROM cidade WHERE id_Cidades = ?";
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
