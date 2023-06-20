@@ -86,7 +86,7 @@ public class PessoaFisicaDAO {
                 retorno.add(pfisica);
             }
 
-// Gabriel Trevisan
+// Gabriel Trevisan de Oliveira
         }
         catch(SQLException ex)
         {
