@@ -1,6 +1,8 @@
 
 package com.imob.model.domain;
 
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author
@@ -18,7 +20,7 @@ public class Cidades extends Estados {
         this.id_Estado = id_Estado;
     }
 
-    public Cidades() {
+    public Cidades(TextField idCodCidade, TextField idCidade, TextField idEstado) {
 
     }
 
