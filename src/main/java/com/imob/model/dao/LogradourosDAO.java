@@ -22,7 +22,7 @@ public class LogradourosDAO {
         return connection;
     }
 
-    public void setConnection(Connection connection) {
+    public static void setConnection(Connection connection) {
         this.connection = connection;
     }
 
