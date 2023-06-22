@@ -17,12 +17,11 @@ import com.imob.model.domain.Enderecos;
 public class LogradourosDAO {
     private Connection connection;
 
-    //GET E SET DA CONEXÃO --> PROFESSOR MARLON
     public Connection getConnection() {
         return connection;
     }
 
-    public static void setConnection(Connection connection) {
+    public void setConnection(Connection connection) {
         this.connection = connection;
     }
 

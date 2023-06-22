@@ -4,6 +4,7 @@ import com.imob.model.dao.CidadesDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Cidades;
+import com.imob.model.domain.Estados;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +26,7 @@ import java.util.ResourceBundle;
  *
  * @author
  */
-public class FXMLCidadesController implements Initializable {
+public class FXMLCidadesController extends Estados implements Initializable {
 
     @FXML
     private Label lblFecharCidades;
@@ -79,7 +80,7 @@ public class FXMLCidadesController implements Initializable {
 
         TableCodCidade.setCellValueFactory(new PropertyValueFactory<>("id_Cidades"));
         Tablecidade.setCellValueFactory(new PropertyValueFactory<>("nome_Cidades"));
-        colunaSiglaEstado.setCellValueFactory(new PropertyValueFactory<>("tb_estados_id_Estados"));
+        colunaSiglaEstado.setCellValueFactory(new PropertyValueFactory<>("id_Estado"));
 
         listCidades = cidadesDAO.buscarTodasCidades();
 
@@ -99,7 +100,6 @@ public class FXMLCidadesController implements Initializable {
     private void inserirDadosNoBancoDados(ActionEvent event){
         Cidades cidades = new Cidades();
         cidades.setNome_Cidades(IdCidade.getText());
-        cidades.setId_Cidades(Integer.parseInt(IdCodCidade.getText()));
         cidades.setId_Estado(Integer.parseInt(IdSigla.getText()));
         cidadesDAO.inserirCidades(cidades);
         limparCampos();

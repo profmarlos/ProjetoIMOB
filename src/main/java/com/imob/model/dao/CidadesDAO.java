@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-    public class CidadesDAO extends EstadosDAO
+    public class CidadesDAO extends Estados
     {
 
         private Connection connection;
@@ -27,14 +27,13 @@ import java.util.List;
 
         // Método para inserir uma nova cidade no banco de dados
         public boolean inserirCidades(Cidades cidade){
-            String sql = "INSERT INTO tb_cidades (id_Cidades, nome_Cidades, tb_estados_id_Estados) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO tb_cidades (nome_Cidades, tb_estados_id_Estados) VALUES (?, ?)";
 
             try
             {
                 PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setInt(1, cidade.getId_Cidades());
-                stmt.setString(2, cidade.getNome_Cidades());
-                stmt.setInt(3, cidade.getId_Estado());
+                stmt.setString(1, cidade.getNome_Cidades());
+                stmt.setInt(2, cidade.getId_Estado());
 
                 stmt.execute();
                 return true;

@@ -1,6 +1,9 @@
 package com.imob.view;
 
+import com.imob.model.dao.CidadesDAO;
 import com.imob.model.dao.LogradourosDAO;
+import com.imob.model.database.Database;
+import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Enderecos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,13 +55,16 @@ public class FXMLEnderecosController  implements Initializable {
     private TableColumn<Enderecos, Integer> colunacodigocasa ;
     @FXML
     private TableColumn<Enderecos, Integer> colunacodigoap;
-    private Connection connection;
+    private final Database database = DatabaseFactory.getDatabase("mysql");
+
+    private final Connection connection = database.conectar();
+    private final LogradourosDAO logradourosDAO = new LogradourosDAO();
 
 
     public void initialize(URL url, ResourceBundle rb) {
 
         //conexão com o banco de dados
-        LogradourosDAO.setConnection(connection);
+       // LogradourosDAO.setConnection(connection);
 
         carregaLogradouroNaTableView();
         System.out.println("Controlador inicializado");
