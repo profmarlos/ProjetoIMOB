@@ -11,9 +11,7 @@ public class Bairro extends Cidades {
     private int id_Barros;
     private String nome_Bairros;
     private int id_Cidades;
-    
     //get e set
-
     public int getId_Barros() {
         return id_Barros;
     }
@@ -37,5 +35,14 @@ public class Bairro extends Cidades {
     public void setId_Cidades(int id_Cidades) {
         this.id_Cidades = id_Cidades;
     }
-    
-}
+
+    //Construtor com erro(sem motivo para ter)
+   /*public Bairro(int id_Cidades, String nome_Cidades, int id_Estado) {
+        super(id_Cidades, nome_Cidades, id_Estado);
+        }
+        public Bairro() {
+
+        }*/
+
+
+    }

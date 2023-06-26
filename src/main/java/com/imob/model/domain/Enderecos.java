@@ -19,10 +19,7 @@ public class Enderecos extends Bairro {
     private String cep;
     private String latitude;
     private String longitude;
-    
     //get e set
-
-    
     public int getId_Endereco() {
         return id_Endereco;
     }
@@ -113,6 +110,12 @@ public class Enderecos extends Bairro {
         this.longitude = longitude;
     }
     
-    
-            
-}
+    //Construtor com erro(sem motivo para ter)
+ /*     public Enderecos(int id_Cidades, String nome_Cidades, int id_Estado) {
+        super(id_Cidades, nome_Cidades, id_Estado);
+        }
+
+        public Enderecos() {
+            super();
+        }*/
+    }

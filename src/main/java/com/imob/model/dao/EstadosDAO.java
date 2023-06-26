@@ -143,9 +143,10 @@ public class EstadosDAO
             while(resultado.next())
             {
                 Estados estados = new Estados();
-                
+
+                estados.setId_Estado(Integer.parseInt(resultado.getString("id_Estado")));
                 estados.setNome_Estado(resultado.getString("nome_Estado"));
-                
+                estados.setSigla_Estado(resultado.getString("sigla_Estado"));
                 
                 //vamos adicionando a liss retorno
                 retorno.add(estados);
