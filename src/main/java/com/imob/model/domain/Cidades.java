@@ -44,20 +44,4 @@ public class Cidades extends Estados {
         this.id_Estado = id_Estado;
     }
 
-    //Construtor com erro(Sem motivo para existir)
-   /* public Cidades(int id_Cidades, String nome_Cidades, int id_Estado) {
-        this.id_Cidades = id_Cidades;
-        this.nome_Cidades = nome_Cidades;
-        this.id_Estado = id_Estado;
-    }
-
-    public Cidades(TextField idCodCidade, TextField idCidade, TextField idEstado) {
-
-    }
-
-    public Cidades() {
-
-    }*/
-
-
 }

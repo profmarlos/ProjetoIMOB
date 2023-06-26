@@ -2,6 +2,7 @@ package com.imob.model.dao;
 
 import com.imob.model.domain.Cidades;
 import com.imob.model.domain.Estados;
+import javafx.collections.FXCollections;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -34,6 +35,7 @@ import java.util.List;
                 PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setString(1, cidade.getNome_Cidades());
                 stmt.setInt(2, cidade.getId_Estado());
+
 
                 stmt.execute();
                 return true;
@@ -185,6 +187,7 @@ import java.util.List;
 
             return retorno;
         }
+
 
     }
 

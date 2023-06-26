@@ -1,6 +1,7 @@
 package com.imob.view;
 
 import com.imob.model.dao.CidadesDAO;
+import com.imob.model.dao.EstadosDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Cidades;
@@ -16,8 +17,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.event.AncestorEvent;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -26,8 +29,12 @@ import java.util.ResourceBundle;
  *
  * @author
  */
-public class FXMLCidadesController extends Estados implements Initializable {
+public class FXMLCidadesController implements Initializable {
 
+    @FXML
+    private ComboBox<Estados> comboBoxEstados;
+    @FXML
+    private Estados lista;
     @FXML
     private Label lblFecharCidades;
     @FXML
@@ -54,16 +61,13 @@ public class FXMLCidadesController extends Estados implements Initializable {
     private Button BDeletar;
     @FXML
     private AnchorPane Anc_cidades;
-
+    private List<Estados> estadosLista = new ArrayList<Estados>();
     private List<Cidades> listCidades;
-    //jogar  na ViemTable com o ObservableList, é necessário usar
     private ObservableList<Cidades> observableCidades;
-
-    //Atributos para manipulação de Banco de Dados
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
-    //private final CidadesDAO cidadeDAO = new CidadesDAO;
     private final CidadesDAO cidadesDAO = new CidadesDAO();
+    private final EstadosDAO estadoDAO = new EstadosDAO();
 
     /**
      * Initializes the controller class.
@@ -72,8 +76,9 @@ public class FXMLCidadesController extends Estados implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         cidadesDAO.setConnection(connection);
-
         carregaCidadesNaTableView();
+        estadoDAO.setConnection(connection);
+        listaEstados();
     }
     public void carregaCidadesNaTableView()
     {
@@ -85,9 +90,9 @@ public class FXMLCidadesController extends Estados implements Initializable {
         listCidades = cidadesDAO.buscarTodasCidades();
 
         observableCidades = FXCollections.observableArrayList(listCidades);
+
         IdTabela.setItems(observableCidades);
     }
-
 
     @FXML
     private void fecharCidade(MouseEvent event) {
@@ -100,7 +105,7 @@ public class FXMLCidadesController extends Estados implements Initializable {
     private void inserirDadosNoBancoDados(ActionEvent event){
         Cidades cidades = new Cidades();
         cidades.setNome_Cidades(IdCidade.getText());
-        cidades.setId_Estado(Integer.parseInt(IdSigla.getText()));
+        cidades.setId_Estado(lista.getId_Estado());
         cidadesDAO.inserirCidades(cidades);
         limparCampos();
         carregaCidadesNaTableView();
@@ -110,14 +115,22 @@ public class FXMLCidadesController extends Estados implements Initializable {
     {
         IdCodCidade.setText("");
         IdCidade.setText("");
-        IdSigla.setText("");
+        listaEstados();
     }
 
     @FXML
     private void selecionarLinhaViewTable(MouseEvent event) {
         IdCodCidade.setText(String.valueOf(IdTabela.getSelectionModel().getSelectedItem().getId_Cidades()));
         IdCidade.setText(IdTabela.getSelectionModel().getSelectedItem().getNome_Cidades());
-        IdSigla.setText(String.valueOf(IdTabela.getSelectionModel().getSelectedItem().getId_Estado()));
+        int temp = Integer.valueOf(IdTabela.getSelectionModel().getSelectedItem().getId_Estado());
+        Estados estados = null;
+        for (int i = 0; i < estadosLista.size(); i++) {
+            if (temp == estadosLista.get(i).getId_Estado()) {
+                estados = estadosLista.get(i);
+            }
+        }
+        //SingleSelectionModel<Estados> galinha;
+        comboBoxEstados.getSelectionModel().select(estados);
     }
     @FXML
     private void deletarDadosSelecionados(ActionEvent event){
@@ -131,11 +144,28 @@ public class FXMLCidadesController extends Estados implements Initializable {
     private void atualizarDadosSelecionados(ActionEvent event){
         Cidades cidade = new Cidades();
         cidade.setNome_Cidades(IdCidade.getText());
-        cidade.setId_Estado(Integer.parseInt(IdSigla.getText()));
+        cidade.setId_Estado(lista.getId_Estado());
         cidade.setId_Cidades(Integer.parseInt(IdCodCidade.getText()));
         cidadesDAO.atualizarCidades(cidade);
         limparCampos();
         carregaCidadesNaTableView();
+    }
+
+    @FXML
+    protected void listaEstadosCb( ActionEvent event ) {
+        //System.out.println("output");
+        lista = comboBoxEstados.getValue();
+        // System.out.println(lista);
+    }
+
+    @FXML
+    private void listaEstados() {
+        estadosLista = estadoDAO.listarNomeEstado();
+        comboBoxEstados.getItems().clear();
+
+        for (Estados e : estadosLista) {
+            comboBoxEstados.getItems().add(e);
+        }
     }
 
 }
