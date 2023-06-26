@@ -68,7 +68,7 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadLogin" mnemonicParsing="false" prefHeight="91.0" prefWidth="353.0" text="Login" GridPane.rowIndex="4">
+            <Button fx:id="btnCadLogin" onAction="#abrirFXMLCadLogin" mnemonicParsing="false" prefHeight="91.0" prefWidth="353.0" text="Login" GridPane.rowIndex="4">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
