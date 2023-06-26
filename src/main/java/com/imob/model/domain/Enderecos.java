@@ -19,6 +19,14 @@ public class Enderecos extends Bairro {
     private String cep;
     private String latitude;
     private String longitude;
+    private String referencias_endereco;
+    private int idCidades;
+    private int cidadesIdEstados;
+    private int idPessoa;
+    private int idBairros;
+    private int bairrosIdCidades;
+    private int bairrosIdEstados;
+
 
     public Enderecos(int id_Cidades, String nome_Cidades, int id_Estado) {
         super(id_Cidades, nome_Cidades, id_Estado);
@@ -86,8 +94,6 @@ public class Enderecos extends Bairro {
     public void setBloco_apartamento(String bloco_apartamento) {
         this.bloco_apartamento = bloco_apartamento;
     }
-    
-    
 
     public String getComplemento() {
         return complemento;
@@ -120,7 +126,57 @@ public class Enderecos extends Bairro {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
-    
-    
+
+    public String getReferencias_endereco() { return referencias_endereco; }
+
+    public void setReferencias_endereco(String referenciasEndereco) { this.referencias_endereco = referenciasEndereco;}
+
+    public int getIdCidades() {
+        return idCidades;
+    }
+
+    public void setIdCidades(int idCidades) {
+        this.idCidades = idCidades;
+    }
+
+    public int getCidadesIdEstados() {
+        return cidadesIdEstados;
+    }
+
+    public void setCidadesIdEstados(int cidadesIdEstados) {
+        this.cidadesIdEstados = cidadesIdEstados;
+    }
+
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
+    public int getIdBairros() {
+        return idBairros;
+    }
+
+    public void setIdBairros(int idBairros) {
+        this.idBairros = idBairros;
+    }
+    public int getBairrosIdCidades() {
+        return bairrosIdCidades;
+    }
+
+    public void setBairrosIdCidades(int bairrosIdCidades) {
+        this.bairrosIdCidades = bairrosIdCidades;
+    }
+
+    public int getBairrosIdEstados() {
+        return bairrosIdEstados;
+    }
+
+    public void setBairrosIdEstados(int bairrosIdEstados) {
+        this.bairrosIdEstados = bairrosIdEstados;
+    }
+
             
 }

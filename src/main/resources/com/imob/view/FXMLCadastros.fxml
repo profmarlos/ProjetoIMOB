@@ -73,7 +73,7 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadLog" mnemonicParsing="false" prefHeight="91.0" prefWidth="353.0" text="Logradouros" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button fx:id="btnCadLog" mnemonicParsing="false" onAction="#abrirFXMLCadLogradouros" prefHeight="91.0" prefWidth="353.0" text="Logradouros" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
