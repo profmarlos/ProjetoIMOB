@@ -248,4 +248,21 @@ public class FXMLCadastrosController implements Initializable {
             Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void abrirFXMLImobiliaria(ActionEvent event) {
+        try {
+            Stage stageImobiliaria = new Stage();
+            Parent rootImobiliaria = FXMLLoader.load(getClass().getResource("FXMLImobiliaria.fxml"));
+            Scene sceneImobiliaria = new Scene(rootImobiliaria);
+
+            // Para remover todos os botões de minimizar, maximizar e fechar
+            stageImobiliaria.initStyle(StageStyle.UNDECORATED);
+
+            stageImobiliaria.setScene(sceneImobiliaria);
+            stageImobiliaria.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLCadastrosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

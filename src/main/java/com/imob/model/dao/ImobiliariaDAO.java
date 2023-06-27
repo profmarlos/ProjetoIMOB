@@ -1,6 +1,7 @@
 package com.imob.model.dao;
 
 import com.imob.model.domain.Imobiliaria;
+import com.imob.model.domain.ImovelUrbano;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -51,10 +52,6 @@ public class ImobiliariaDAO {
             return false;
         }
     }
-
-
-
-
 
 
     public void excluirImobiliaria(Imobiliaria imobiliaria) throws SQLException {
@@ -115,5 +112,24 @@ public class ImobiliariaDAO {
 
     public void setConnection(Connection connection) {
     }
+
+    //agora sou eu
+    public boolean remover(Imobiliaria imobiliaria) {
+        String sql = "DELETE FROM tb_imobiliaria WHERE id_Imobiliaria = ?";
+
+        try {
+            System.out.println("DELETE ID: " + imobiliaria.getId_Imobiliaria());
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, imobiliaria.getId_Imobiliaria());
+
+            stmt.execute();
+
+            return true;
+
+        } catch (SQLException e) {
+            //System.err.println("Erro ao remover dados do banco de dados: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Não foi possível remover do banco: " + e.getMessage());
+            return false;
+        }
+    }
 }
-//agora sou eu

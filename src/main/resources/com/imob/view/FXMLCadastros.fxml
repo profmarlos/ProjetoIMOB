@@ -53,7 +53,7 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadImobiliaria" mnemonicParsing="false" prefHeight="91.0" prefWidth="353.0" text="Imobiliarias" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="btnCadImobiliaria"  onAction="#abrirFXMLImobiliaria" mnemonicParsing="false" prefHeight="91.0" prefWidth="353.0" text="Imobiliarias" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
