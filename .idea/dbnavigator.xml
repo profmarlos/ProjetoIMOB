@@ -49,15 +49,22 @@
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="5.5" />
+<<<<<<< HEAD
+          <driver-source value="EXTERNAL" />
+=======
           <driver-source value="BUNDLED" />
+>>>>>>> f4cd6e5f9efbdf6afb304ca9bf4ae8a84c41054d
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
           <database value="bd_imob" />
+<<<<<<< HEAD
+=======
           <tns-folder value="" />
           <tns-profile value="" />
+>>>>>>> f4cd6e5f9efbdf6afb304ca9bf4ae8a84c41054d
           <type value="USER" />
           <user value="root" />
           <deprecated-pwd value="" />

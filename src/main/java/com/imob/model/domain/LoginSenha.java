@@ -8,7 +8,7 @@ import java.sql.Time;
  *
  * @author
  */
-public class LoginSenha extends PessoaFisica{
+public class LoginSenha extends PessoaFisica {
    
     //atributos
     private int id_Login;
@@ -17,7 +17,7 @@ public class LoginSenha extends PessoaFisica{
     private String permissao;
     private Date data_login;
     private Time time_login;
-    
+
     //get e set
 
     public int getId_Login() {
