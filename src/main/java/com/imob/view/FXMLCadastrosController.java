@@ -112,6 +112,29 @@ public class FXMLCadastrosController implements Initializable {
     }
 
     @FXML
+    private void abrirFXMLCadLogin(ActionEvent event) {
+
+        try {
+            Stage stageCadLogin = new Stage();
+
+            Parent rootCadLogin = FXMLLoader.load(getClass().getResource("FXMLLoginList.fxml"));
+
+            Scene sceneCadLogin = new Scene(rootCadLogin);
+
+            //para retirar todos os botões de minimizar, maximizar e fechar
+            stageCadLogin.initStyle(StageStyle.UNDECORATED);
+
+            stageCadLogin.setScene(sceneCadLogin);
+
+            stageCadLogin.show();//abria a stage
+
+        }
+        catch (IOException ex) {
+            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
     private void abrirFXMLCadCidades(ActionEvent event) {
         
          try
@@ -130,6 +153,31 @@ public class FXMLCadastrosController implements Initializable {
             stageCadCidades.show();//abria a stage
 
         } 
+        catch (IOException ex)
+        {
+            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void abrirFXMLCadLogradouros(ActionEvent event) {
+
+        try
+        {
+            Stage stageCadLogradouros = new Stage();
+
+            Parent rootCadLogradouros = FXMLLoader.load(getClass().getResource("FXMLEnderecos.fxml"));
+
+            Scene sceneCadLogradouros = new Scene(rootCadLogradouros);
+
+            //para retirar todos os botões de minimizar, maximizar e fechar
+            stageCadLogradouros.initStyle(StageStyle.UNDECORATED);
+
+            stageCadLogradouros.setScene(sceneCadLogradouros);
+
+            stageCadLogradouros.show();//abria a stage
+
+        }
         catch (IOException ex)
         {
             Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);

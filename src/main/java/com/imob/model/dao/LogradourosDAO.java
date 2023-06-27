@@ -3,6 +3,7 @@ package com.imob.model.dao;
 //-------------------------DIVISOR-------------------------------
 
 //IMPORTS
+import com.imob.model.domain.Enderecos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import com.imob.model.domain.Enderecos;
 //-------------------------DIVISOR-------------------------------
 
 //MAIN CLASS
@@ -29,7 +29,7 @@ public class LogradourosDAO {
 
     //INSERÇÃO DE LOGRADOURO
     public boolean inserirLogradouro(Enderecos logradouro) {
-        String sql = "INSERT INTO tb_logradouros (tipo_Logradouro, logradouro, numero_logradouro, numero_apartamento, andar_apartamento, bloco_apartamento, complemento, cep, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_endereco (tipo_Logradouro, logradouro, numero_logradouro, numero_apartamento, andar_apartamento, bloco_apartamento, complemento, cep, latitude, longitude, referencias_endereceo, tb_bairros_id_Bairros, tb_bairros_tb_cidades_id_Cidades, tb_bairros_tb_cidades_tb_estados_id_Estados, tb_cidades_id_Cidades, tb_cidades_tb_estados_id_Estados, tb_pessoa_id_Pessoa) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, logradouro.getTipo_Logradouro());
@@ -42,8 +42,15 @@ public class LogradourosDAO {
             statement.setString(8, logradouro.getCep());
             statement.setString(9, logradouro.getLatitude());
             statement.setString(10, logradouro.getLongitude());
+            statement.setString(11, logradouro.getReferencias_endereco());
+            statement.setInt(12, logradouro.getIdBairros());
+            statement.setInt(13, logradouro.getBairrosIdCidades());
+            statement.setInt(14, logradouro.getBairrosIdEstados());
+            statement.setInt(15, logradouro.getIdCidades());
+            statement.setInt(16, logradouro.getCidadesIdEstados());
+            statement.setInt(17, logradouro.getIdPessoa());
 
-            statement.executeUpdate();
+            statement.execute();
 
             return true;
         } catch (SQLException e) {
@@ -58,7 +65,7 @@ public class LogradourosDAO {
     //ALTERAR LOGRADOURO
     public boolean alterarLogradouro(Enderecos logradouro)
     {
-        String sql = "UPDATE tb_logradouros SET tipo_Logradouro = ?, logradouro = ?, numero_logradouro = ?, numero_apartamento = ?, andar_apartamento = ?, bloco_apartamento = ?, complemento = ?, cep = ?, latitude = ?, longitude = ?  WHERE id_Endereco = ?";
+        String sql = "UPDATE tb_endereco SET tipo_Logradouro = ?, logradouro = ?, numero_logradouro = ?, numero_apartamento = ?, andar_apartamento = ?, bloco_apartamento = ?, complemento = ?, cep = ?, latitude = ?, longitude = ?, referencias_endereceo = ?, tb_bairros_id_Bairros = ?, tb_bairros_tb_cidades_id_Cidades = ?, tb_bairros_tb_cidades_tb_estados_id_Estados = ?, tb_cidades_id_Cidades = ?, tb_cidades_tb_estados_id_Estados = ?, tb_pessoa_id_Pessoa = ?  WHERE id_Endereco = ?";
 
         try
         {
@@ -73,9 +80,16 @@ public class LogradourosDAO {
             statement.setString(8, logradouro.getCep());
             statement.setString(9, logradouro.getLatitude());
             statement.setString(10, logradouro.getLongitude());
-            statement.setInt(11, logradouro.getId_Endereco());
+            statement.setString(11, logradouro.getReferencias_endereco());
+            statement.setInt(12, logradouro.getIdBairros());
+            statement.setInt(13, logradouro.getBairrosIdCidades());
+            statement.setInt(14, logradouro.getBairrosIdEstados());
+            statement.setInt(15, logradouro.getIdCidades());
+            statement.setInt(16, logradouro.getCidadesIdEstados());
+            statement.setInt(17, logradouro.getIdPessoa());
+            statement.setInt(18, logradouro.getId_Endereco());
 
-            statement.executeUpdate();
+            statement.execute();
 
             return true;
         }
@@ -90,7 +104,7 @@ public class LogradourosDAO {
     //REMOVER LOGRADOURO
     public boolean removerLogradouro(Enderecos logradouro)
     {
-        String sql = "DELETE FROM tb_logradouros WHERE id_Endereco = ?";
+        String sql = "DELETE FROM tb_endereco WHERE id_Endereco = ?";
 
         try
         {
@@ -98,7 +112,7 @@ public class LogradourosDAO {
             stmt.setInt(1, logradouro.getId_Endereco());
 
 
-            stmt.executeUpdate();
+            stmt.execute();
 
             return true;
         }
@@ -113,7 +127,7 @@ public class LogradourosDAO {
     //LISTAR LOGRADOUROS
     public List<Enderecos> listaLogradouros()
     {
-        String sql = "SELECT * FROM tb_logradouros";
+        String sql = "SELECT * FROM tb_endereco";
 
         List<Enderecos> retorno = new ArrayList<>();
 
@@ -137,6 +151,14 @@ public class LogradourosDAO {
                 enderecos.setLatitude(resultado.getString("latitude"));
                 enderecos.setLongitude(resultado.getString("longitude"));
 
+                enderecos.setReferencias_endereco(resultado.getString("referencias_endereceo"));
+                enderecos.setIdBairros(resultado.getInt("tb_bairros_id_Bairros"));
+                enderecos.setBairrosIdCidades(resultado.getInt("tb_bairros_tb_cidades_id_Cidades"));
+                enderecos.setBairrosIdEstados(resultado.getInt("tb_bairros_tb_cidades_tb_estados_id_Estados"));
+                enderecos.setIdCidades(resultado.getInt("tb_cidades_id_Cidades"));
+                enderecos.setCidadesIdEstados(resultado.getInt("tb_cidades_tb_estados_id_Estados"));
+                enderecos.setIdPessoa(resultado.getInt("tb_pessoa_id_Pessoa"));
+
                 //ADD LOGRADOUROS AO RETORNO (EM LISTA)
                 retorno.add(enderecos);
             }
@@ -158,7 +180,7 @@ public class LogradourosDAO {
     //BUSCAR LOGRADOURO
     public Enderecos buscarLogradouros(Enderecos logradouro)
     {
-        String sql = "SELECT * FROM tb_estados WHERE id_Estado = ?";
+        String sql = "SELECT * FROM tb_endereco WHERE id_Endereco = ?";
 
         Enderecos retorno = new Enderecos();
 
@@ -176,7 +198,12 @@ public class LogradourosDAO {
             statement.setString(9, logradouro.getCep());
             statement.setString(10, logradouro.getLatitude());
             statement.setString(11, logradouro.getLongitude());
-
+            statement.setInt(12, logradouro.getIdBairros());
+            statement.setInt(13, logradouro.getBairrosIdCidades());
+            statement.setInt(14, logradouro.getBairrosIdEstados());
+            statement.setInt(15, logradouro.getIdCidades());
+            statement.setInt(16, logradouro.getCidadesIdEstados());
+            statement.setInt(17, logradouro.getIdPessoa());
 
             ResultSet resultado = statement.executeQuery();
 
@@ -193,6 +220,14 @@ public class LogradourosDAO {
                 logradouro.setCep(resultado.getString("cep"));
                 logradouro.setLatitude(resultado.getString("latitude"));
                 logradouro.setLongitude(resultado.getString("longitude"));
+                logradouro.setReferencias_endereco(resultado.getString("referencias_endereceo"));
+                logradouro.setIdBairros(resultado.getInt("tb_bairros_id_Bairros"));
+                logradouro.setBairrosIdCidades(resultado.getInt("tb_bairros_tb_cidades_id_Cidades"));
+                logradouro.setBairrosIdEstados(resultado.getInt("tb_bairros_tb_cidades_tb_estados_id_Estados"));
+                logradouro.setIdCidades(resultado.getInt("tb_cidades_id_Cidades"));
+                logradouro.setCidadesIdEstados(resultado.getInt("tb_cidades_tb_estados_id_Estados"));
+                logradouro.setIdPessoa(resultado.getInt("tb_pessoa_id_Pessoa"));
+
                 retorno = logradouro;
             }
 
