@@ -19,7 +19,9 @@ public class ImovelUrbano extends ImovelGeral {
     private int quant_Vagas_Carro;
     private String tem_Edicula;
     private String tem_Churrasqueira;
-    
+
+    private int id_imovel_geral;
+
     //get e set
 
     public int getId_Imovel_U() {
@@ -109,5 +111,13 @@ public class ImovelUrbano extends ImovelGeral {
     public void setTem_Churrasqueira(String tem_Churrasqueira) {
         this.tem_Churrasqueira = tem_Churrasqueira;
     }
-    
+
+    public int getId_imovel_geral() {
+        return id_imovel_geral;
+    }
+
+    public void setId_imovel_geral(int id_imovel_geral) {
+        this.id_imovel_geral = id_imovel_geral;
+    }
+
 }
