@@ -4,6 +4,7 @@ import com.imob.model.dao.ImobiliariaDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Imobiliaria;
+import com.imob.model.domain.ImovelUrbano;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -95,12 +96,12 @@ public class FXMLImobiliariaController implements Initializable {
 
     @FXML
     private void fecharImobiliaria(MouseEvent event) {
-        Stage stage = (Stage) lblFecharImobiliaria.getScene().getWindow();
+        Stage stage = (Stage)lblFecharImobiliaria.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void adicionarImobiliaria(ActionEvent event) {
+    private void adicionarImobiliaria(ActionEvent event) throws SQLException {
         int id_Codigo_imobiliaria = Integer.parseInt(tfCodigoImobiliaria.getText());
         int numero_Creci = Integer.parseInt(tfCodigoCreci.getText());
         int id_Imobiliaria = Integer.parseInt(tfIdImobiliaria.getText());
@@ -115,10 +116,14 @@ public class FXMLImobiliariaController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        carregaImobiliariaNaTableView();
     }
 
     @FXML
-    private void atualizarImobiliaria(ActionEvent event) {
+    private void atualizarImobiliaria(ActionEvent event) throws SQLException {
+
+        Imobiliaria imobiliaria = new Imobiliaria();
         int id_Codigo_imobiliaria = Integer.parseInt(tfCodigoImobiliaria.getText());
         int numero_Creci = Integer.parseInt(tfCodigoCreci.getText());
         int id_Imobiliaria = Integer.parseInt(tfIdImobiliaria.getText());
@@ -126,18 +131,28 @@ public class FXMLImobiliariaController implements Initializable {
         int tb_pessoa_juridica_tb_pessoa_id_Pessoa = Integer.parseInt(tfPessoaId.getText());
         int tb_pagamento_comissao_id_Pag_Comissao = Integer.parseInt(tfPagcomissao.getText());
 
-        Imobiliaria imobiliaria = new Imobiliaria(id_Codigo_imobiliaria, numero_Creci, id_Imobiliaria, tb_pessoa_juridica_id_PessoaPJ, tb_pessoa_juridica_tb_pessoa_id_Pessoa, tb_pagamento_comissao_id_Pag_Comissao);
-
-        try {
-            imobiliariaDAO.atualizarImobiliaria(imobiliaria);
-            System.out.println("Imobiliária atualizada com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao atualizar imobiliária: " + e.getMessage());
-        }
+        ImobiliariaDAO.alterar(imobiliaria);
+        limparCampos();
+        carregaImoveisUrbanosNaTableView();
     }
 
+
+    private void carregaImoveisUrbanosNaTableView() {
+    }
+
+    private void deletarInformacoesNoBanco(ActionEvent event) throws SQLException {
+        Imobiliaria imobiliaria = new Imobiliaria();
+
+        imobiliaria.setId_Imobiliaria(Integer.parseInt(tfIdImobiliaria.getText()));
+
+        ImobiliariaDAO.remover(imobiliaria);
+
+
+        limparCampos();
+        carregaImobiliariaNaTableView();
+    }
     @FXML
-    private void excluirImobiliaria(ActionEvent event) {
+    private void excluirImobiliaria(ActionEvent event) throws SQLException {
         int id_Imobiliaria = Integer.parseInt(tfIdImobiliaria.getText());
 
         try {
@@ -147,7 +162,11 @@ public class FXMLImobiliariaController implements Initializable {
         } catch (SQLException e) {
             System.out.println("Erro ao excluir imobiliária: " + e.getMessage());
         }
+            limparCampos();
+        carregaImobiliariaNaTableView();
     }
+
+
 
     @FXML
     private List<Imobiliaria> buscarTodasImobiliaria() {
@@ -183,6 +202,15 @@ public class FXMLImobiliariaController implements Initializable {
             tfPessoaId.setText(String.valueOf(imobiliaria.getTb_pessoa_juridica_tb_pessoa_id_Pessoa()));
             tfPagcomissao.setText(String.valueOf(imobiliaria.getTb_pagamento_comissao_id_Pag_Comissao()));
         }
+    }
+    public void limparCampos(){
+        tfIdImobiliaria.setText("");
+        tfIdImobiliaria.setText("");
+        tfCodigoImobiliaria.setText("");
+        tfPagcomissao.setText("");
+        tfPessoaId.setText("");
+        tfPessoaPj.setText("");
+
     }
 }
 

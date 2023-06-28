@@ -253,7 +253,7 @@ public class FXMLCadastrosController implements Initializable {
     private void abrirFXMLImobiliaria(ActionEvent event) {
         try {
             Stage stageImobiliaria = new Stage();
-            Parent rootImobiliaria = FXMLLoader.load(getClass().getResource("FXMLImobiliaria.fxml"));
+            Parent rootImobiliaria = FXMLLoader.load(getClass().getResource("FXMLImobiliariaController.fxml"));
             Scene sceneImobiliaria = new Scene(rootImobiliaria);
 
             // Para remover todos os botões de minimizar, maximizar e fechar

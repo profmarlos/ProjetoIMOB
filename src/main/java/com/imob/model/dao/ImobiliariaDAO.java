@@ -1,7 +1,6 @@
 package com.imob.model.dao;
 
 import com.imob.model.domain.Imobiliaria;
-import com.imob.model.domain.ImovelUrbano;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -13,11 +12,16 @@ import java.util.List;
 
 public class ImobiliariaDAO {
 
-    private final Connection connection;
+    private static Connection connection;
 
     public ImobiliariaDAO(Connection connection) {
         this.connection = connection;
     }
+
+    public static void remover(Imobiliaria imobiliaria) {
+    }
+
+
 
     public void inserirImobiliaria(Imobiliaria imobiliaria) throws SQLException {
         String sql = "INSERT INTO tb_imobiliaria (id_Codigo_imobiliaria, numero_Creci, id_Imobiliaria, tb_pessoa_juridica_id_PessoaPJ, tb_pessoa_juridica_tb_pessoa_id_Pessoa, tb_pagamento_comissao_id_Pag_Comissao) VALUES (?, ?, ?, ?, ?, ?)";
@@ -32,9 +36,10 @@ public class ImobiliariaDAO {
         stmt.close();
     }
 
-    public boolean atualizarImobiliaria(Imobiliaria imobiliaria) throws SQLException {
+    public static boolean alterar(Imobiliaria imobiliaria) {
         String sql = "UPDATE tb_imobiliaria SET id_Codigo_imobiliaria = ?, numero_Creci = ?, tb_pessoa_juridica_id_PessoaPJ = ?, tb_pessoa_juridica_tb_pessoa_id_Pessoa = ?, tb_pagamento_comissao_id_Pag_Comissao = ? WHERE id_Imobiliaria = ?";
         try {
+
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, imobiliaria.getId_Codigo_imobiliaria());
             stmt.setInt(2, imobiliaria.getNumero_Creci());
@@ -43,6 +48,7 @@ public class ImobiliariaDAO {
             stmt.setInt(5, imobiliaria.getTb_pagamento_comissao_id_Pag_Comissao());
             stmt.setInt(6, imobiliaria.getId_Imobiliaria());
             System.out.println("UPDATE ID: " + imobiliaria.getId_Imobiliaria());
+
 
             stmt.execute();
             return true;
@@ -54,12 +60,22 @@ public class ImobiliariaDAO {
     }
 
 
-    public void excluirImobiliaria(Imobiliaria imobiliaria) throws SQLException {
+    public boolean excluirImobiliaria(Imobiliaria imobiliaria) throws SQLException {
+
         String sql = "DELETE FROM tb_imobiliaria WHERE id_Imobiliaria = ?";
-        PreparedStatement stmt = connection.prepareStatement(sql);
-        stmt.setInt(1, imobiliaria.getId_Imobiliaria());
-        stmt.executeUpdate();
-        stmt.close();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            stmt.setInt(1, imobiliaria.getId_Imobiliaria());
+            stmt.executeUpdate();
+            stmt.close();
+            return true;
+        } catch (SQLException e) {
+            //System.err.println("Erro ao remover dados do banco de dados: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Não foi possível remover do banco: " + e.getMessage());
+            return false;
+        }
+
     }
 
     public List<Imobiliaria> buscarTodasImobiliaria() throws SQLException {
@@ -114,22 +130,4 @@ public class ImobiliariaDAO {
     }
 
     //agora sou eu
-    public boolean remover(Imobiliaria imobiliaria) {
-        String sql = "DELETE FROM tb_imobiliaria WHERE id_Imobiliaria = ?";
-
-        try {
-            System.out.println("DELETE ID: " + imobiliaria.getId_Imobiliaria());
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, imobiliaria.getId_Imobiliaria());
-
-            stmt.execute();
-
-            return true;
-
-        } catch (SQLException e) {
-            //System.err.println("Erro ao remover dados do banco de dados: " + e.getMessage());
-            JOptionPane.showMessageDialog(null, "Não foi possível remover do banco: " + e.getMessage());
-            return false;
-        }
-    }
 }

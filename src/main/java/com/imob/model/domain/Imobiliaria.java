@@ -26,6 +26,10 @@ public class Imobiliaria extends PessoaJuridica {
         this.tb_pagamento_comissao_id_Pag_Comissao = tb_pagamento_comissao_id_Pag_Comissao;
     }
 
+    public Imobiliaria() {
+
+    }
+
     public int getId_Imobiliaria() {
         return id_Imobiliaria;
     }

@@ -29,7 +29,7 @@ public class Enderecos extends Bairro {
 
 
     public Enderecos(int id_Cidades, String nome_Cidades, int id_Estado) {
-        super(id_Cidades, nome_Cidades, id_Estado);
+        super();
     }
 
     public Enderecos() {
