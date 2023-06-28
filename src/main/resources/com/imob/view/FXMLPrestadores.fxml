@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="47.0" prefWidth="800.0">
+         <children>
+            <Button fx:id="BtClose" layoutX="771.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#fecharJanela" prefHeight="30.0" prefWidth="30.0" text="X" />
+            <Button fx:id="BtMinimizar" layoutX="741.0" layoutY="-1.0" mnemonicParsing="false" onMouseClicked="#minimizarJanela" prefHeight="30.0" prefWidth="30.0" text="-" />
+            <Text layoutX="191.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRESTADORES DE SERVIÇO" wrappingWidth="418.041015625">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TextField fx:id="TxCd" alignment="CENTER" layoutX="14.0" layoutY="47.0" prefHeight="25.0" prefWidth="76.0" promptText="CODIGO" />
+      <TextField fx:id="TxNome" alignment="CENTER" layoutX="96.0" layoutY="47.0" prefHeight="25.0" prefWidth="360.0" promptText="NOME" />
+      <TextField fx:id="TxCpf" alignment="CENTER" layoutX="462.0" layoutY="47.0" promptText="CPF" />
+      <TextField fx:id="TxFuncao" alignment="CENTER" layoutX="617.0" layoutY="47.0" prefHeight="25.0" prefWidth="169.0" promptText="FUNÇÃO" />
+      <TableView layoutX="15.0" layoutY="92.0" prefHeight="375.0" prefWidth="770.0">
+        <columns>
+          <TableColumn fx:id="TbCodigo" prefWidth="84.0" text="CODIGO" />
+          <TableColumn fx:id="TbNome" prefWidth="302.0" text="NOME" />
+            <TableColumn fx:id="TbCpf" prefWidth="192.5" text="CPF" />
+            <TableColumn fx:id="TbFuncao" prefWidth="192.5" text="FUNÇÃO" />
+        </columns>
+      </TableView>
+      <Button fx:id="BtAdd" layoutX="15.0" layoutY="519.0" mnemonicParsing="false" onAction="#addPrestador" prefHeight="25.0" prefWidth="180.0" text="ADICONAR" />
+      <Button fx:id="BtEdt" layoutX="210.0" layoutY="519.0" mnemonicParsing="false" onAction="#edtPrestador" prefWidth="180.0" text="EDITAR" />
+      <Button fx:id="BtLmp" layoutX="408.0" layoutY="519.0" mnemonicParsing="false" onAction="#limparPrestador" prefWidth="180.0" text="LIMPAR" />
+      <Button fx:id="BtDel" layoutX="605.0" layoutY="519.0" mnemonicParsing="false" onAction="#delPrestador" prefWidth="180.0" text="DELETAR" />
+   </children>
+</AnchorPane>
