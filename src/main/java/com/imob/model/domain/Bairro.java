@@ -11,6 +11,11 @@ public class Bairro extends Cidades {
     private int id_Barros;
     private String nome_Bairros;
     private int id_Cidades;
+
+    public Bairro() {
+        super();
+    }
+
     //get e set
     public int getId_Barros() {
         return id_Barros;
