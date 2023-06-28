@@ -4,18 +4,14 @@ import com.imob.model.dao.ImobiliariaDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
 import com.imob.model.domain.Imobiliaria;
-import com.imob.model.domain.ImovelUrbano;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -27,158 +23,65 @@ import java.util.ResourceBundle;
 
 public class FXMLImobiliariaController implements Initializable {
 
-    private final Database database = DatabaseFactory.getDatabase("mysql");
-    private final Connection connection = database.conectar();
-    private ImobiliariaDAO imobiliariaDAO = new ImobiliariaDAO(connection);
+    @FXML
+    private TextField tfCodigoCreci;
+
+    @FXML
+    private TextField tfIdImobiliaria;
+
+    @FXML
+    private TextField tfPessoaPj;
+
+    @FXML
+    private TextField tfPessoaId;
+
+    @FXML
+    private TextField tfPagcomissao;
+
+    @FXML
+    private TextField tfCodigoImobiliaria;
+    @FXML
+    private Label lblCadFecharImobiliaria;
+
+    @FXML
+    private TableColumn<Imobiliaria, Integer> tbCreci;
+
+    @FXML
+    private TableColumn<Imobiliaria, Integer> tbIdImobiliaria;
+
+    @FXML
+    private TableColumn<Imobiliaria, Integer> tbCodigoImobiliaria;
+
+    @FXML
+    private TableColumn<Imobiliaria, Integer> tbPessoaPJ;
+
+    @FXML
+    private TableColumn<Imobiliaria, Integer> tbPessoaIdPessoa;
+
+    @FXML
+    private TableColumn<Imobiliaria, Integer> tbPagComissao;
 
     @FXML
     private TableView<Imobiliaria> tableViewImobiliaria;
-    @FXML
-    private TableColumn<Imobiliaria, Integer> tbCreci;
-    @FXML
-    private TableColumn<Imobiliaria, Integer> tbIdImobiliaria;
-    @FXML
-    private TableColumn<Imobiliaria, Integer> tbCodigoImobiliaria;
-    @FXML
-    private TableColumn<Imobiliaria, Integer> tbPessoaPJ;
-    @FXML
-    private TableColumn<Imobiliaria, Integer> tbPessoaIdPessoa;
-    @FXML
-    private TableColumn<Imobiliaria, Integer> tbPagComissao;
-    @FXML
-    private Button btInserir;
-    @FXML
-    private Button btPesquisar;
-    @FXML
-    private Button btAtualizar;
-    @FXML
-    private Button btDeletar;
-    @FXML
-    private Label lblCodigoCreci;
-    @FXML
-    private Label lblPessoaPj;
-    @FXML
-    private Label lblPagcomissao;
-    @FXML
-    private Label lblIdImobiliaria;
-    @FXML
-    private Label lblCodigoImobiliaria;
-    @FXML
-    private Label lblPessoaId;
-    @FXML
-    private TextField tfCodigoCreci;
-    @FXML
-    private TextField tfIdImobiliaria;
-    @FXML
-    private TextField tfPessoaPj;
-    @FXML
-    private TextField tfPessoaId;
-    @FXML
-    private TextField tfPagcomissao;
-    @FXML
-    private TextField tfCodigoImobiliaria;
 
-    @FXML
-    private Label lblFecharImobiliaria;
     private List<Imobiliaria> listImobiliaria;
     private ObservableList<Imobiliaria> observableImobiliaria;
 
+    private final Database database = DatabaseFactory.getDatabase("mysql");
+    private final Connection connection = database.conectar();
+    private final ImobiliariaDAO imobiliariaDAO = new ImobiliariaDAO();
+
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle rb) {
+
         imobiliariaDAO.setConnection(connection);
-        try {
-            carregaImobiliariaNaTableView();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+
+
+        carregaImobiliariaNaTableView();
         System.out.println("Controlador inicializado");
-    }
-
-    @FXML
-    private void fecharImobiliaria(MouseEvent event) {
-        Stage stage = (Stage)lblFecharImobiliaria.getScene().getWindow();
-        stage.close();
-    }
-
-    @FXML
-    private void adicionarImobiliaria(ActionEvent event) throws SQLException {
-        int id_Codigo_imobiliaria = Integer.parseInt(tfCodigoImobiliaria.getText());
-        int numero_Creci = Integer.parseInt(tfCodigoCreci.getText());
-        int id_Imobiliaria = Integer.parseInt(tfIdImobiliaria.getText());
-        int tb_pessoa_juridica_id_PessoaPJ = Integer.parseInt(tfPessoaPj.getText());
-        int tb_pessoa_juridica_tb_pessoa_id_Pessoa = Integer.parseInt(tfPessoaId.getText());
-        int tb_pagamento_comissao_id_Pag_Comissao = Integer.parseInt(tfPagcomissao.getText());
-
-        Imobiliaria imobiliaria = new Imobiliaria(id_Codigo_imobiliaria, numero_Creci, id_Imobiliaria, tb_pessoa_juridica_id_PessoaPJ, tb_pessoa_juridica_tb_pessoa_id_Pessoa, tb_pagamento_comissao_id_Pag_Comissao);
-
-        try {
-            imobiliariaDAO.inserirImobiliaria(imobiliaria);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
 
-        carregaImobiliariaNaTableView();
-    }
-
-    @FXML
-    private void atualizarImobiliaria(ActionEvent event) throws SQLException {
-
-        Imobiliaria imobiliaria = new Imobiliaria();
-        int id_Codigo_imobiliaria = Integer.parseInt(tfCodigoImobiliaria.getText());
-        int numero_Creci = Integer.parseInt(tfCodigoCreci.getText());
-        int id_Imobiliaria = Integer.parseInt(tfIdImobiliaria.getText());
-        int tb_pessoa_juridica_id_PessoaPJ = Integer.parseInt(tfPessoaPj.getText());
-        int tb_pessoa_juridica_tb_pessoa_id_Pessoa = Integer.parseInt(tfPessoaId.getText());
-        int tb_pagamento_comissao_id_Pag_Comissao = Integer.parseInt(tfPagcomissao.getText());
-
-        ImobiliariaDAO.alterar(imobiliaria);
-        limparCampos();
-        carregaImoveisUrbanosNaTableView();
-    }
-
-
-    private void carregaImoveisUrbanosNaTableView() {
-    }
-
-    private void deletarInformacoesNoBanco(ActionEvent event) throws SQLException {
-        Imobiliaria imobiliaria = new Imobiliaria();
-
-        imobiliaria.setId_Imobiliaria(Integer.parseInt(tfIdImobiliaria.getText()));
-
-        ImobiliariaDAO.remover(imobiliaria);
-
-
-        limparCampos();
-        carregaImobiliariaNaTableView();
-    }
-    @FXML
-    private void excluirImobiliaria(ActionEvent event) throws SQLException {
-        int id_Imobiliaria = Integer.parseInt(tfIdImobiliaria.getText());
-
-        try {
-            Imobiliaria imobiliaria = new Imobiliaria(0, 0, id_Imobiliaria, 0, 0, 0);
-            imobiliariaDAO.excluirImobiliaria(imobiliaria);
-            System.out.println("Imobiliária excluída com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao excluir imobiliária: " + e.getMessage());
-        }
-            limparCampos();
-        carregaImobiliariaNaTableView();
-    }
-
-
-
-    @FXML
-    private List<Imobiliaria> buscarTodasImobiliaria() {
-        try {
-            return imobiliariaDAO.buscarTodasImobiliaria();
-        } catch (SQLException e) {
-            System.out.println("Erro ao buscar imobiliárias: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public void carregaImobiliariaNaTableView() throws SQLException {
+    public void carregaImobiliariaNaTableView(){
         tbCreci.setCellValueFactory(new PropertyValueFactory<>("numero_Creci"));
         tbIdImobiliaria.setCellValueFactory(new PropertyValueFactory<>("id_Imobiliaria"));
         tbCodigoImobiliaria.setCellValueFactory(new PropertyValueFactory<>("id_Codigo_imobiliaria"));
@@ -187,30 +90,143 @@ public class FXMLImobiliariaController implements Initializable {
         tbPagComissao.setCellValueFactory(new PropertyValueFactory<>("tb_pagamento_comissao_id_Pag_Comissao"));
 
         listImobiliaria = imobiliariaDAO.lista();
+
         observableImobiliaria = FXCollections.observableArrayList(listImobiliaria);
+
         tableViewImobiliaria.setItems(observableImobiliaria);
     }
 
     @FXML
     private void selecionarLinhaViewTable(MouseEvent event) {
-        Imobiliaria imobiliaria = tableViewImobiliaria.getSelectionModel().getSelectedItem();
-        if (imobiliaria != null) {
-            tfCodigoCreci.setText(String.valueOf(imobiliaria.getNumero_Creci()));
-            tfIdImobiliaria.setText(String.valueOf(imobiliaria.getId_Imobiliaria()));
-            tfCodigoImobiliaria.setText(String.valueOf(imobiliaria.getId_Codigo_imobiliaria()));
-            tfPessoaPj.setText(String.valueOf(imobiliaria.getTb_pessoa_juridica_id_PessoaPJ()));
-            tfPessoaId.setText(String.valueOf(imobiliaria.getTb_pessoa_juridica_tb_pessoa_id_Pessoa()));
-            tfPagcomissao.setText(String.valueOf(imobiliaria.getTb_pagamento_comissao_id_Pag_Comissao()));
-        }
+
+        tfCodigoCreci.setText(String.valueOf(tableViewImobiliaria.getSelectionModel().getSelectedItem().getNumero_Creci()));
+        tfIdImobiliaria.setText(String.valueOf(tableViewImobiliaria.getSelectionModel().getSelectedItem().getId_Imobiliaria()));
+        tfCodigoImobiliaria.setText(String.valueOf(tableViewImobiliaria.getSelectionModel().getSelectedItem().getId_Codigo_imobiliaria()));
+        tfPessoaPj.setText(String.valueOf(tableViewImobiliaria.getSelectionModel().getSelectedItem().getTb_pessoa_juridica_id_PessoaPJ()));
+        tfPessoaId.setText(String.valueOf(tableViewImobiliaria.getSelectionModel().getSelectedItem().getTb_pessoa_juridica_tb_pessoa_id_Pessoa()));
+        tfPagcomissao.setText(String.valueOf(tableViewImobiliaria.getSelectionModel().getSelectedItem().getTb_pagamento_comissao_id_Pag_Comissao()));
     }
+
+    @FXML
+    private void fecharImobiliaria(MouseEvent event) {
+        Stage st = (Stage) lblCadFecharImobiliaria.getScene().getWindow();
+        st.close();
+
+    }
+
+    @FXML
+    private void inserirDadosNoBancoDados(ActionEvent event) {
+        Imobiliaria imobiliaria = new Imobiliaria();
+
+        imobiliaria.setId_Codigo_imobiliaria(Integer.parseInt(tfCodigoImobiliaria.getText()));
+        imobiliaria.setNumero_Creci(Integer.parseInt(tfCodigoCreci.getText()));
+        imobiliaria.setId_Imobiliaria(Integer.parseInt(tfIdImobiliaria.getText()));
+        imobiliaria.setTb_pessoa_juridica_id_PessoaPJ(Integer.parseInt(tfPessoaPj.getText()));
+        imobiliaria.setTb_pessoa_juridica_tb_pessoa_id_Pessoa(Integer.parseInt(tfPessoaId.getText()));
+        imobiliaria.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(tfPagcomissao.getText()));
+
+        String CodigoImobiliaria = tfCodigoImobiliaria.getText();
+        if (!isNumeroInteiroValido(CodigoImobiliaria)) {
+            exibirErro("Erro de validação", "Insira um número inteiro válido no Banheiro!");
+            tfCodigoImobiliaria.clear();
+            return;
+        }
+
+        String CodigoCreci = tfCodigoCreci.getText();
+        if (!isNumeroInteiroValido(CodigoCreci)) {
+            exibirErro("Erro de validação", "Insira um número inteiro válido no Dormitório!");
+            tfCodigoCreci.clear();
+            return;
+        }
+
+        String IdImobiliaria = tfIdImobiliaria.getText();
+        if (!isNumeroInteiroValido(IdImobiliaria)) {
+            exibirErro("Erro de validação", "Insira um número inteiro válido na Salas!");
+            tfIdImobiliaria.clear();
+            return;
+        }
+
+        String PessoaPj = tfPessoaPj.getText();
+        if (!isNumeroInteiroValido(PessoaPj)) {
+            exibirErro("Erro de validação", "Insira um número inteiro válido na Vagas!");
+            tfPessoaPj.clear();
+            return;
+        }
+
+        String PessoaId = tfPessoaId.getText();
+        if (!isNumeroInteiroValido(PessoaId)) {
+            exibirErro("Erro de validação", "Insira um número inteiro válido no ID!");
+            tfPessoaId.clear();
+            return;
+        }
+
+        String Pagcomissao = tfPagcomissao.getText();
+        if (!isNumeroInteiroValido(Pagcomissao)) {
+            exibirErro("Erro de validação", "Insira um número inteiro válido no Id Geral!");
+            tfPagcomissao.clear();
+            return;
+        }
+        imobiliariaDAO.inserir(imobiliaria);
+
+        limparCampos();
+        carregaImobiliariaNaTableView();
+    }
+
+    @FXML
+    private void deletarInformacoesNoBanco(ActionEvent event){
+        Imobiliaria imobiliaria = new Imobiliaria();
+
+        imobiliaria.setId_Imobiliaria(Integer.parseInt(tfIdImobiliaria.getText()));
+
+        imobiliariaDAO.remover(imobiliaria);
+
+
+        limparCampos();
+
+        carregaImobiliariaNaTableView();
+    }
+
+    @FXML
+    private void atualizarImobiliaria(ActionEvent event){
+
+        Imobiliaria imobiliaria = new Imobiliaria();
+
+        imobiliaria.setId_Codigo_imobiliaria(Integer.parseInt(tfCodigoImobiliaria.getText()));
+        imobiliaria.setNumero_Creci(Integer.parseInt(tfCodigoCreci.getText()));
+        imobiliaria.setId_Imobiliaria(Integer.parseInt(tfIdImobiliaria.getText()));
+        imobiliaria.setTb_pessoa_juridica_id_PessoaPJ(Integer.parseInt(tfPessoaPj.getText()));
+        imobiliaria.setTb_pessoa_juridica_tb_pessoa_id_Pessoa(Integer.parseInt(tfPessoaId.getText()));
+        imobiliaria.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(tfPagcomissao.getText()));
+
+            imobiliariaDAO.alterar(imobiliaria);
+            limparCampos();
+            carregaImobiliariaNaTableView();
+    }
+
+
     public void limparCampos(){
         tfIdImobiliaria.setText("");
-        tfIdImobiliaria.setText("");
+        tfCodigoCreci.setText("");
         tfCodigoImobiliaria.setText("");
         tfPagcomissao.setText("");
         tfPessoaId.setText("");
         tfPessoaPj.setText("");
 
+    }
+    private boolean isNumeroInteiroValido(String texto) {
+        try {
+            Integer.parseInt(texto);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    private void exibirErro(String titulo, String mensagem) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensagem);
+        alert.showAndWait();
     }
 }
 

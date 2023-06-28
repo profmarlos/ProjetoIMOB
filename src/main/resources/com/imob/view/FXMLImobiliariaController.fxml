@@ -6,10 +6,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="583.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLImobiliariaController">
+<AnchorPane prefHeight="691.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLImobiliariaController">
     <children>
-        <TableView fx:id="tableViewImobiliaria" layoutX="10.0" layoutY="234.0" prefHeight="300.0" prefWidth="685.0">
+        <TableView fx:id="tableViewImobiliaria" layoutX="10.0" layoutY="234.0" onMouseClicked="#selecionarLinhaViewTable" prefHeight="300.0" prefWidth="685.0">
             <columns>
                 <TableColumn fx:id="tbCreci" prefWidth="75.0" text="Creci" />
                 <TableColumn fx:id="tbIdImobiliaria" prefWidth="114.0" text="ID Imobiliaria" />
@@ -19,15 +20,10 @@
                 <TableColumn fx:id="tbPagComissao" prefWidth="103.0" text="Pagamento Comissao ID" />
             </columns>
         </TableView>
-        <Button fx:id="btInserir" layoutX="23.0" layoutY="542.0" mnemonicParsing="false" onAction="#adicionarImobiliaria" text="Inserir" />
-        <Button fx:id="btPesquisar" layoutX="88.0" layoutY="542.0" mnemonicParsing="false" text="Pesquisar" />
-        <Button fx:id="btAtualizar" layoutX="180.0" layoutY="542.0" mnemonicParsing="false" onAction="#atualizarImobiliaria" text="Atualizar" />
-        <Button fx:id="btDeletar" layoutX="270.0" layoutY="542.0" mnemonicParsing="false" onAction="#excluirImobiliaria" text="Deletar" />
-        <Label fx:id="lblCodigoCreci" layoutX="23.0" layoutY="110.0" text="Código Creci" />
-        <TextField fx:id="tfCodigoCreci" layoutX="23.0" layoutY="135.0" />
+        <Label layoutX="23.0" layoutY="110.0" text="Código Creci" />
+        <TextField fx:id="tfCodigoCreci" layoutX="23.0" layoutY="135.0" promptText="Código" />
         <Label fx:id="lblCodigoImobiliaria" layoutX="338.0" layoutY="110.0" text="Código Imobiliaria" />
         <TextField fx:id="tfIdImobiliaria" layoutX="180.0" layoutY="135.0" />
-        <Label fx:id="lblFecharImboliaria" layoutX="652.0" layoutY="22.0" onMouseClicked="#fecharImobiliaria" text="Fechar" />
         <TextField fx:id="tfPessoaId" layoutX="180.0" layoutY="195.0" />
         <TextField fx:id="tfCodigoImobiliaria" layoutX="338.0" layoutY="135.0" />
         <TextField fx:id="tfPessoaPj" layoutX="23.0" layoutY="195.0" />
@@ -36,5 +32,31 @@
         <Label fx:id="lblPessoaPj" layoutX="23.0" layoutY="171.0" text="Pessoa Juridica" />
         <Label fx:id="lblPessoaId" layoutX="180.0" layoutY="171.0" text="ID pessoa" />
         <Label fx:id="lblPagcomissao" layoutX="338.0" layoutY="171.0" text="Pagamento" />
+      <Label fx:id="lblCadFecharImobiliaria" layoutX="567.0" layoutY="148.0" onMouseClicked="#fecharImobiliaria" prefHeight="37.0" prefWidth="32.0" text="X">
+         <font>
+            <Font name="Calibri Bold" size="40.0" />
+         </font>
+
+      </Label>
+      <Button fx:id="bottomatualizar" layoutX="197.0" layoutY="593.0" mnemonicParsing="false" onAction="#atualizarImobiliaria" prefHeight="44.0" prefWidth="141.0" text="ATUALIZAR" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bottominserir" layoutX="15.0" layoutY="593.0" mnemonicParsing="false" onAction="#inserirDadosNoBancoDados" prefHeight="43.0" prefWidth="154.0" text="INSERIR" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bottomdeletar" layoutX="369.0" layoutY="593.0" mnemonicParsing="false" onAction="#deletarInformacoesNoBanco" prefHeight="43.0" prefWidth="154.0" text="DELETAR" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="bottomlimpar" layoutX="541.0" layoutY="593.0" mnemonicParsing="false" onAction="#atualizarImobiliaria" prefHeight="43.0" prefWidth="154.0" text="LIMPAR" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
