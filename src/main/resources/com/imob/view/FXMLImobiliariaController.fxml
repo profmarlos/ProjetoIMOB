@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="691.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLImobiliariaController">
+<AnchorPane prefHeight="691.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLImobiliariaController">
     <children>
         <TableView fx:id="tableViewImobiliaria" layoutX="10.0" layoutY="234.0" onMouseClicked="#selecionarLinhaViewTable" prefHeight="300.0" prefWidth="685.0">
             <columns>
-                <TableColumn fx:id="tbCreci" prefWidth="75.0" text="Creci" />
-                <TableColumn fx:id="tbIdImobiliaria" prefWidth="114.0" text="ID Imobiliaria" />
+                <TableColumn fx:id="tbIdImobiliaria" prefWidth="91.0" text="ID Imobliaria" />
+                <TableColumn fx:id="tbCreci" prefWidth="98.0" text="Tb Creci" />
                 <TableColumn fx:id="tbCodigoImobiliaria" prefWidth="128.0" text="Codigo Imobiliaria" />
                 <TableColumn fx:id="tbPessoaPJ" prefWidth="133.0" text="Pessoa Juridica ID" />
                 <TableColumn fx:id="tbPessoaIdPessoa" prefWidth="131.0" text="Pessoa ID" />

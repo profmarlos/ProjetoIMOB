@@ -120,7 +120,6 @@ public class FXMLImobiliariaController implements Initializable {
 
         imobiliaria.setId_Codigo_imobiliaria(Integer.parseInt(tfCodigoImobiliaria.getText()));
         imobiliaria.setNumero_Creci(Integer.parseInt(tfCodigoCreci.getText()));
-        imobiliaria.setId_Imobiliaria(Integer.parseInt(tfIdImobiliaria.getText()));
         imobiliaria.setTb_pessoa_juridica_id_PessoaPJ(Integer.parseInt(tfPessoaPj.getText()));
         imobiliaria.setTb_pessoa_juridica_tb_pessoa_id_Pessoa(Integer.parseInt(tfPessoaId.getText()));
         imobiliaria.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(tfPagcomissao.getText()));
@@ -136,13 +135,6 @@ public class FXMLImobiliariaController implements Initializable {
         if (!isNumeroInteiroValido(CodigoCreci)) {
             exibirErro("Erro de validação", "Insira um número inteiro válido no Dormitório!");
             tfCodigoCreci.clear();
-            return;
-        }
-
-        String IdImobiliaria = tfIdImobiliaria.getText();
-        if (!isNumeroInteiroValido(IdImobiliaria)) {
-            exibirErro("Erro de validação", "Insira um número inteiro válido na Salas!");
-            tfIdImobiliaria.clear();
             return;
         }
 

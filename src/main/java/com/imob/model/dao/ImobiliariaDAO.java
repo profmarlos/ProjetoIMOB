@@ -23,16 +23,15 @@ public class ImobiliariaDAO {
 
     public boolean inserir(Imobiliaria imobiliarias) {
 
-        String sql = "INSERT INTO tb_imobiliaria (id_Codigo_imobiliaria, numero_Creci, id_Imobiliaria, tb_pessoa_juridica_id_PessoaPJ, tb_pessoa_juridica_tb_pessoa_id_Pessoa, tb_pagamento_comissao_id_Pag_Comissao) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_imobiliaria (id_Codigo_imobiliaria, numero_Creci, tb_pessoa_juridica_id_PessoaPJ, tb_pessoa_juridica_tb_pessoa_id_Pessoa, tb_pagamento_comissao_id_Pag_Comissao) VALUES (?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, imobiliarias.getId_Codigo_imobiliaria());
             stmt.setInt(2, imobiliarias.getNumero_Creci());
-            stmt.setInt(3, imobiliarias.getId_Imobiliaria());
-            stmt.setInt(4, imobiliarias.getTb_pessoa_juridica_id_PessoaPJ());
-            stmt.setInt(5, imobiliarias.getTb_pessoa_juridica_tb_pessoa_id_Pessoa());
-            stmt.setInt(6, imobiliarias.getTb_pagamento_comissao_id_Pag_Comissao());
+            stmt.setInt(3, imobiliarias.getTb_pessoa_juridica_id_PessoaPJ());
+            stmt.setInt(4, imobiliarias.getTb_pessoa_juridica_tb_pessoa_id_Pessoa());
+            stmt.setInt(5, imobiliarias.getTb_pagamento_comissao_id_Pag_Comissao());
             stmt.execute();
 
             return true;
@@ -55,6 +54,7 @@ public class ImobiliariaDAO {
             stmt.setInt(4, imobiliarias.getTb_pessoa_juridica_tb_pessoa_id_Pessoa());
             stmt.setInt(5, imobiliarias.getTb_pagamento_comissao_id_Pag_Comissao());
             stmt.setInt(6, imobiliarias.getId_Imobiliaria());
+
             System.out.println("UPDATE ID: " + imobiliarias.getId_Imobiliaria());
 
 
@@ -72,8 +72,8 @@ public class ImobiliariaDAO {
         String sql = "DELETE FROM tb_imobiliaria WHERE id_Imobiliaria = ?";
 
         try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
             System.out.println("DELETE ID: " + imobiliarias.getId_Imobiliaria());
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, imobiliarias.getId_Imobiliaria());
 
             stmt.executeUpdate();
@@ -99,7 +99,7 @@ public class ImobiliariaDAO {
             while (rs.next())
             {
                 Imobiliaria imobiliarias = new Imobiliaria();
-                imobiliarias.setId_Imobiliaria(rs.getInt("id_Codigo_imobiliaria"));
+                imobiliarias.setId_Codigo_imobiliaria(rs.getInt("id_Codigo_imobiliaria"));
                 imobiliarias.setNumero_Creci(rs.getInt("numero_Creci"));
                 imobiliarias.setId_Imobiliaria(rs.getInt("id_Imobiliaria"));
                 imobiliarias.setTb_pessoa_juridica_id_PessoaPJ(rs.getInt("tb_pessoa_juridica_id_PessoaPJ"));
