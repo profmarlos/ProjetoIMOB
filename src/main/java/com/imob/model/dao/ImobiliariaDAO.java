@@ -55,7 +55,7 @@ public class ImobiliariaDAO {
             stmt.setInt(5, imobiliarias.getTb_pagamento_comissao_id_Pag_Comissao());
             stmt.setInt(6, imobiliarias.getId_Imobiliaria());
 
-            System.out.println("UPDATE ID: " + imobiliarias.getId_Imobiliaria());
+            System.out.println("ID ALTERADO: " + imobiliarias.getId_Imobiliaria());
 
 
             stmt.execute();
@@ -72,7 +72,7 @@ public class ImobiliariaDAO {
         String sql = "DELETE FROM tb_imobiliaria WHERE id_Imobiliaria = ?";
 
         try {
-            System.out.println("DELETE ID: " + imobiliarias.getId_Imobiliaria());
+            System.out.println("ID DELETADO: " + imobiliarias.getId_Imobiliaria());
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, imobiliarias.getId_Imobiliaria());
 

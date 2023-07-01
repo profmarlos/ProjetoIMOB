@@ -78,7 +78,7 @@ public class FXMLImobiliariaController implements Initializable {
 
 
         carregaImobiliariaNaTableView();
-        System.out.println("Controlador inicializado");
+        System.out.println("Imobiliária foi iniciada");
         }
 
     public void carregaImobiliariaNaTableView(){
