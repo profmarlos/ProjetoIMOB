@@ -37,6 +37,38 @@ public class Corretor extends PessoaFisica {
     public void setNumero_Creci(int numero_Creci) {
         this.numero_Creci = numero_Creci;
     }
-            
-    
+
+
+    public int getTb_pessoa_fisica_id_PessoaPF() {
+        return 0;
+    }
+
+    public String getTb_pessoa_fisica_tb_pessoa_id_Pessoa() {
+        return null;
+    }
+
+    public int getTb_pagamento_comissao_id_Pag_Comissao() {
+        return 0;
+    }
+
+    public void setTb_pagamento_comissao_id_Pag_Comissao(int tbPagamentoComissaoIdPagComissao) {
+    }
+
+    public void setTb_pessoa_fisica_tb_pessoa_id_Pessoa(int tbPessoaFisicaTbPessoaIdPessoa) {
+    }
+
+    public void setTb_pessoa_fisica_id_PessoaPF(int tbPessoaFisicaIdPessoaPF) {
+    }
+
+    public char[] getIdCorretor() {
+        return new char[0];
+    }
+
+    public char[] getCodigoCorretor() {
+        return new char[0];
+    }
+
+    public char[] getNumeroCreci() {
+        return new char[0];
+    }
 }
