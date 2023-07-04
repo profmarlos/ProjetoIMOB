@@ -23,11 +23,15 @@ public class CorretorDAO {
     }
 
     public boolean inserir(Corretor corretor) {
-        String sql = "INSERT INTO tb-corretor (id_Codigo_Corretor, numero_Creci) VALUES (?, ?)";
+        String sql = "INSERT INTO tb_corretor (id_Codigo_Corretor, numero_Creci, tb_pessoa_fisica_id_PessoaPF, tb_pessoa_fisica_tb_pessoa_id_Pessoa, tb_pagamento_comissao_id_Pag_Comissao,id_Corretor) VALUES (?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Codigo_Corretor());
             stmt.setInt(2, corretor.getNumero_Creci());
+            stmt.setInt(3, corretor.getId_Corretor());
+            stmt.setInt(4, corretor.getTb_pessoa_fisica_id_PessoaPF());
+            stmt.setInt(5, corretor.getTb_pessoa_fisica_tb_pessoa_id_Pessoa());
+            stmt.setInt(6, corretor.getTb_pagamento_comissao_id_Pag_Comissao());
             stmt.executeUpdate();
 
             return true;
@@ -38,12 +42,15 @@ public class CorretorDAO {
     }
 
     public boolean atualizar(Corretor corretor) {
-        String sql = "UPDATE tb-corretor SET id_Codigo_Corretor = ?, numero_Creci = ? WHERE id_Corretor = ?";
+        String sql = "UPDATE tb_corretor SET id_Codigo_Corretor = ?, numero_Creci = ?,tb_pessoa_fisica_id_PessoaPF = ?, tb_pessoa_fisica_tb_pessoa_id_Pessoa = ? , tb_pagamento_comissao_id_Pag_Comissao = ? , WHERE id_Corretor = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Codigo_Corretor());
             stmt.setInt(2, corretor.getNumero_Creci());
             stmt.setInt(3, corretor.getId_Corretor());
+            stmt.setInt(4, corretor.getTb_pessoa_fisica_id_PessoaPF());
+            stmt.setInt(5, corretor.getTb_pessoa_fisica_tb_pessoa_id_Pessoa());
+            stmt.setInt(6, corretor.getTb_pagamento_comissao_id_Pag_Comissao());
 
             stmt.executeUpdate();
 
@@ -55,7 +62,7 @@ public class CorretorDAO {
     }
 
     public boolean remover(Corretor corretor) {
-        String sql = "DELETE FROM tb_corretor WHERE id-Corretor = ?";
+        String sql = "DELETE FROM tb_corretor WHERE id_Corretor = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Corretor());
@@ -70,7 +77,7 @@ public class CorretorDAO {
     }
 
     public List<Corretor> listar() {
-        String sql = "SELECT * FROM tb-corretor";
+        String sql = "SELECT * FROM tb_corretor";
         List<Corretor> retorno = new ArrayList<>();
 
         try {
@@ -82,6 +89,11 @@ public class CorretorDAO {
                 corretor.setId_Corretor(resultado.getInt("id_Corretor"));
                 corretor.setId_Codigo_Corretor(resultado.getInt("id_Codigo_Corretor"));
                 corretor.setNumero_Creci(resultado.getInt("numero_Creci"));
+
+                corretor.setTb_pessoa_fisica_id_PessoaPF(resultado.getInt("tb_pessoa_fisica_id_PessoaPF"));
+                corretor.setTb_pessoa_fisica_tb_pessoa_id_Pessoa(resultado.getInt("tb_pessoa_fisica_tb_pessoa_id_Pessoa"));
+                corretor.setTb_pagamento_comissao_id_Pag_Comissao(resultado.getInt("tb_pagamento_comissao_id_Pag_Comissao"));
+
 
                 retorno.add(corretor);
             }

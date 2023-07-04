@@ -41,10 +41,26 @@ public class FXMLCadCorretorController implements Initializable {
 
     @FXML
     private TableColumn<Corretor, Integer> colunaNumeroCreci;
+    @FXML
+    private TableColumn<Corretor, Integer> colunaTb_pessoa_fisica_id_PessoaPF;
 
+    @FXML
+    private TableColumn<Corretor, Integer> colunaTb_pessoa_fisica_tb_pessoa_id_Pessoa;
+
+    @FXML
+    private TableColumn<Corretor, Integer> colunaTb_pagamento_comissao_id_Pag_Comissao;
     private List<Corretor> listCorretores;
 
     private ObservableList<Corretor> observableCorretores;
+
+    @FXML
+    private TextField Tb_pessoa_fisica_id_PessoaPF;
+
+    @FXML
+    private TextField Tb_pessoa_fisica_tb_pessoa_id_Pessoa;
+
+    @FXML
+    private TextField Tb_pagamento_comissao_id_Pag_Comissao;
 
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
@@ -62,6 +78,11 @@ public class FXMLCadCorretorController implements Initializable {
         colunaIdCorretor.setCellValueFactory(new PropertyValueFactory<>("id_Corretor"));
         colunaCodigoCorretor.setCellValueFactory(new PropertyValueFactory<>("codigo_Corretor"));
         colunaNumeroCreci.setCellValueFactory(new PropertyValueFactory<>("numero_Creci"));
+        colunaTb_pessoa_fisica_id_PessoaPF.setCellValueFactory(new PropertyValueFactory<>("tb_pessoa_fisica_id_PessoaPF"));
+        colunaTb_pessoa_fisica_tb_pessoa_id_Pessoa.setCellValueFactory(new PropertyValueFactory<>("tb_pessoa_fisica_tb_pessoa_id_Pessoa"));
+        colunaTb_pagamento_comissao_id_Pag_Comissao.setCellValueFactory(new PropertyValueFactory<>("tb_pagamento_comissao_id_Pag_Comissao"));
+
+
 
         listCorretores = corretorDAO.listar();
 
@@ -72,13 +93,17 @@ public class FXMLCadCorretorController implements Initializable {
 
     @FXML
     private void selecionarLinhaViewTable(MouseEvent event){
-
-        textIdCorretor.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getId_Corretor()));
-        textCodigoCorretor.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getId_Codigo_Corretor()));
-        textNumeroCreci.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getNumero_Creci()));
-
-
+        // Verifica se o item selecionado não é nulo
+        if (tbCorretores.getSelectionModel().getSelectedItem() != null) {
+            textIdCorretor.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getId_Corretor()));
+            textCodigoCorretor.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getId_Codigo_Corretor()));
+            textNumeroCreci.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getNumero_Creci()));
+            Tb_pessoa_fisica_id_PessoaPF.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getTb_pessoa_fisica_id_PessoaPF()));
+            Tb_pessoa_fisica_tb_pessoa_id_Pessoa.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getTb_pessoa_fisica_tb_pessoa_id_Pessoa()));
+            Tb_pagamento_comissao_id_Pag_Comissao.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getTb_pagamento_comissao_id_Pag_Comissao()));
+        }
     }
+
     @FXML
     private void inserirDadosNoBancoDados(ActionEvent event) {
         Corretor corretor = new Corretor();
@@ -86,6 +111,12 @@ public class FXMLCadCorretorController implements Initializable {
         corretor.setId_Corretor(Integer.parseInt(textIdCorretor.getText()));
         corretor.setId_Codigo_Corretor(Integer.parseInt(textCodigoCorretor.getText()));
         corretor.setNumero_Creci(Integer.parseInt(textNumeroCreci.getText()));
+
+        corretor.setTb_pessoa_fisica_id_PessoaPF(Integer.parseInt(Tb_pessoa_fisica_id_PessoaPF.getText()));
+        corretor.setTb_pessoa_fisica_tb_pessoa_id_Pessoa(Integer.parseInt(Tb_pessoa_fisica_tb_pessoa_id_Pessoa.getText()));
+        corretor.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(Tb_pagamento_comissao_id_Pag_Comissao.getText()));
+
+
 
         corretorDAO.inserir(corretor);
 
@@ -113,6 +144,10 @@ public class FXMLCadCorretorController implements Initializable {
         corretor.setId_Codigo_Corretor(Integer.parseInt(textCodigoCorretor.getText()));
         corretor.setNumero_Creci(Integer.parseInt(textNumeroCreci.getText()));
 
+        corretor.setTb_pessoa_fisica_id_PessoaPF(Integer.parseInt(Tb_pessoa_fisica_id_PessoaPF.getText()));
+        corretor.setTb_pessoa_fisica_tb_pessoa_id_Pessoa(Integer.parseInt(Tb_pessoa_fisica_tb_pessoa_id_Pessoa.getText()));
+        corretor.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(Tb_pagamento_comissao_id_Pag_Comissao.getText()));
+
         corretorDAO.atualizar(corretor);
 
         limparCampos();
@@ -123,6 +158,10 @@ public class FXMLCadCorretorController implements Initializable {
         textIdCorretor.clear();
         textCodigoCorretor.clear();
         textNumeroCreci.clear();
+        Tb_pessoa_fisica_id_PessoaPF.clear();
+        Tb_pessoa_fisica_tb_pessoa_id_Pessoa.clear();
+        Tb_pagamento_comissao_id_Pag_Comissao.clear();
+
     }
 
     @FXML

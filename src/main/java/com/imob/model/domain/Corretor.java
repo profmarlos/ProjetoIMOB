@@ -43,8 +43,10 @@ public class Corretor extends PessoaFisica {
         return 0;
     }
 
-    public String getTb_pessoa_fisica_tb_pessoa_id_Pessoa() {
-        return null;
+    public int getTb_pessoa_fisica_tb_pessoa_id_Pessoa() {
+        return 0;
+    } {
+
     }
 
     public int getTb_pagamento_comissao_id_Pag_Comissao() {
@@ -70,5 +72,9 @@ public class Corretor extends PessoaFisica {
 
     public char[] getNumeroCreci() {
         return new char[0];
+    }
+
+    public int getid_Corretor() {
+        return 0;
     }
 }

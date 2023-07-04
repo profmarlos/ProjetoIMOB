@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCadCorretorController">
+<AnchorPane prefHeight="483.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.imob.view.FXMLCadCorretorController">
     <children>
         <VBox layoutX="14.0" layoutY="14.0" spacing="10.0">
             <Label text="ID Corretor" />
@@ -19,18 +19,24 @@
             <Label text="Número Creci" />
             <TextField fx:id="textNumeroCreci" />
         </VBox>
-        <TableView fx:id="tbCorretores" layoutX="200.0" layoutY="14.0" onMouseClicked="#selecionarLinhaViewTable"  prefHeight="372.0" prefWidth="386.0">
+        <TableView fx:id="tbCorretores" layoutX="165.0" layoutY="14.0" onMouseClicked="#selecionarLinhaViewTable" prefHeight="460.0" prefWidth="523.0">
             <columns>
-                <TableColumn fx:id="colunaIdCorretor" prefWidth="100.0" text="ID Corretor" />
-                <TableColumn fx:id="colunaCodigoCorretor" prefWidth="100.0" text="Código Corretor" />
-                <TableColumn fx:id="colunaNumeroCreci" prefWidth="100.0" text="Número Creci" />
+                <TableColumn fx:id="colunaIdCorretor" prefWidth="74.0" text="ID Corretor" />
+                <TableColumn fx:id="colunaCodigoCorretor" prefWidth="103.0" text="Código Corretor" />
+                <TableColumn fx:id="colunaNumeroCreci" prefWidth="90.0" text="Número Creci" />
+            <TableColumn fx:id="colunaTb_pessoa_fisica_id_PessoaPF" prefWidth="90.0" text="PesssoaPF" />
+            <TableColumn fx:id="colunaTb_pessoa_fisica_tb_pessoa_id_Pessoa" prefWidth="90.0" text="id pessoa" />
+            <TableColumn fx:id="colunaTb_pagamento_comissao_id_Pag_Comissao" prefWidth="90.0" text="pagamento" />
             </columns>
         </TableView>
-        <HBox layoutX="14.0" layoutY="362.0" spacing="10.0">
-            <Button fx:id="inserirButton" mnemonicParsing="false" onAction="#inserirDadosNoBancoDados" text="Inserir" />
-            <Button fx:id="deletarButton" mnemonicParsing="false" onAction="#deletarInformacoesNoBanco" text="Deletar" />
-            <Button fx:id="atualizarButton" mnemonicParsing="false" onAction="#atualizarInformacoesNoBanco" text="Atualizar" />
-        </HBox>
-        <Button fx:id="limparButton" layoutX="70.0" layoutY="331.0" mnemonicParsing="false" onAction="#atualizarInformacoesNoBanco" text="limpar" />
+        <HBox layoutX="14.0" layoutY="362.0" spacing="10.0" />
+        <Button fx:id="limparButton" layoutX="105.0" layoutY="375.0" mnemonicParsing="false" onAction="#atualizarInformacoesNoBanco" text="limpar" />
+      <TextField fx:id="Tb_pessoa_fisica_id_PessoaPF" layoutX="14.0" layoutY="217.0" promptText="PessoaPF" />
+      <TextField fx:id="Tb_pessoa_fisica_tb_pessoa_id_Pessoa" layoutX="14.0" layoutY="250.0" promptText="id pessoa" />
+      <TextField fx:id="Tb_pagamento_comissao_id_Pag_Comissao" layoutX="14.0" layoutY="294.0" promptText="pagamento" />
+      <Button fx:id="fecharButton" layoutX="73.0" layoutY="337.0" mnemonicParsing="false" onAction="#fecharTela" text="FECHAR" />
+         <Button fx:id="inserirButton" layoutX="24.0" layoutY="411.0" mnemonicParsing="false" onAction="#inserirDadosNoBancoDados" text="Inserir" />
+         <Button fx:id="atualizarButton" layoutX="98.0" layoutY="412.0" mnemonicParsing="false" onAction="#atualizarInformacoesNoBanco" text="Atualizar" />
+         <Button fx:id="deletarButton" layoutX="37.0" layoutY="375.0" mnemonicParsing="false" onAction="#deletarInformacoesNoBanco" text="Deletar" />
     </children>
 </AnchorPane>
