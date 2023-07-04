@@ -19,7 +19,7 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.ResourceBundle;
 
-class FXMLCadCorretorController implements Initializable {
+public class FXMLCadCorretorController implements Initializable {
 
     @FXML
     private TextField textIdCorretor;
@@ -59,9 +59,9 @@ class FXMLCadCorretorController implements Initializable {
 
     public void carregarCorretoresNaTableView() {
 
-        colunaIdCorretor.setCellValueFactory(new PropertyValueFactory<>("idCorretor"));
-        colunaCodigoCorretor.setCellValueFactory(new PropertyValueFactory<>("codigoCorretor"));
-        colunaNumeroCreci.setCellValueFactory(new PropertyValueFactory<>("numeroCreci"));
+        colunaIdCorretor.setCellValueFactory(new PropertyValueFactory<>("id_Corretor"));
+        colunaCodigoCorretor.setCellValueFactory(new PropertyValueFactory<>("codigo_Corretor"));
+        colunaNumeroCreci.setCellValueFactory(new PropertyValueFactory<>("numero_Creci"));
 
         listCorretores = corretorDAO.listar();
 
@@ -71,17 +71,18 @@ class FXMLCadCorretorController implements Initializable {
     }
 
     @FXML
-    private void selecionarLinhaViewTable(MouseEvent event) {
+    private void selecionarLinhaViewTable(MouseEvent event){
 
-            //textIdCorretor.setCache(String.valueOf(colunaIdCorretor.getSelectionModel().getSelectedItem().getId_Corretor()));
-            //textCodigoCorretor.setText(String.valueOf(colunaCodigoCorretor.getSelectionModel().getSelectedItem().getCodigo_Corretor()));
-            //textNumeroCreci.setText(String.valueOf(colunaNumeroCreci.getSelectionModel().getSelectedItem().getNumero_Creci()));
-        }
+        textIdCorretor.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getId_Corretor()));
+        textCodigoCorretor.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getId_Codigo_Corretor()));
+        textNumeroCreci.setText(String.valueOf(tbCorretores.getSelectionModel().getSelectedItem().getNumero_Creci()));
 
 
+    }
     @FXML
     private void inserirDadosNoBancoDados(ActionEvent event) {
         Corretor corretor = new Corretor();
+
         corretor.setId_Corretor(Integer.parseInt(textIdCorretor.getText()));
         corretor.setId_Codigo_Corretor(Integer.parseInt(textCodigoCorretor.getText()));
         corretor.setNumero_Creci(Integer.parseInt(textNumeroCreci.getText()));
@@ -98,10 +99,10 @@ class FXMLCadCorretorController implements Initializable {
 
         corretor.setId_Corretor(Integer.parseInt(textIdCorretor.getText()));
 
-            corretorDAO.remover(corretor);
-            limparCampos();
-            carregarCorretoresNaTableView();
-        }
+        corretorDAO.remover(corretor);
+        limparCampos();
+        carregarCorretoresNaTableView();
+    }
 
 
     @FXML
@@ -112,12 +113,11 @@ class FXMLCadCorretorController implements Initializable {
         corretor.setId_Codigo_Corretor(Integer.parseInt(textCodigoCorretor.getText()));
         corretor.setNumero_Creci(Integer.parseInt(textNumeroCreci.getText()));
 
-            corretorDAO.atualizar(corretor);
+        corretorDAO.atualizar(corretor);
 
-            limparCampos();
-            carregarCorretoresNaTableView();
-        }
-
+        limparCampos();
+        carregarCorretoresNaTableView();
+    }
 
     private void limparCampos() {
         textIdCorretor.clear();

@@ -23,14 +23,11 @@ public class CorretorDAO {
     }
 
     public boolean inserir(Corretor corretor) {
-        String sql = "INSERT INTO tb_corretor (id_Codigo_Corretor, numero_Creci, id_Corretor) VALUES (?, ?, ?,)";
+        String sql = "INSERT INTO tb-corretor (id_Codigo_Corretor, numero_Creci) VALUES (?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Codigo_Corretor());
             stmt.setInt(2, corretor.getNumero_Creci());
-            stmt.setInt(2, corretor.getId_Corretor());
-
-
             stmt.executeUpdate();
 
             return true;
@@ -41,12 +38,12 @@ public class CorretorDAO {
     }
 
     public boolean atualizar(Corretor corretor) {
-        String sql = "UPDATE tb_corretor SET id_Codigo_Corretor = ?, numero_Creci = ?, tb_pessoa_fisica_id_PessoaPF = ?, tb_pessoa_fisica_tb_pessoa_id_Pessoa = ?, tb_pagamento_comissao_id_Pag_Comissao = ? WHERE id_Corretor = ?";
+        String sql = "UPDATE tb-corretor SET id_Codigo_Corretor = ?, numero_Creci = ? WHERE id_Corretor = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Codigo_Corretor());
             stmt.setInt(2, corretor.getNumero_Creci());
-            stmt.setInt(2, corretor.getId_Corretor());
+            stmt.setInt(3, corretor.getId_Corretor());
 
             stmt.executeUpdate();
 
@@ -58,7 +55,7 @@ public class CorretorDAO {
     }
 
     public boolean remover(Corretor corretor) {
-        String sql = "DELETE FROM tb_corretor WHERE id_Corretor = ?";
+        String sql = "DELETE FROM tb_corretor WHERE id-Corretor = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Corretor());
@@ -73,7 +70,7 @@ public class CorretorDAO {
     }
 
     public List<Corretor> listar() {
-        String sql = "SELECT * FROM tb_corretor";
+        String sql = "SELECT * FROM tb-corretor";
         List<Corretor> retorno = new ArrayList<>();
 
         try {

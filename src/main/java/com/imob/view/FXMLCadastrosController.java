@@ -265,4 +265,20 @@ public class FXMLCadastrosController implements Initializable {
             Logger.getLogger(FXMLCadastrosController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    @FXML
+    private void abrirFXMLCorretor(ActionEvent event) {
+        try {
+            Stage stageCorretor = new Stage();
+            Parent rootCorretor = FXMLLoader.load(getClass().getResource("FXMLCadCorretorController.fxml"));
+            Scene sceneCorretor = new Scene(rootCorretor);
+
+            // Para remover todos os botões de minimizar, maximizar e fechar
+            stageCorretor.initStyle(StageStyle.UNDECORATED);
+
+            stageCorretor.setScene(sceneCorretor);
+            stageCorretor.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLCadastrosController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
