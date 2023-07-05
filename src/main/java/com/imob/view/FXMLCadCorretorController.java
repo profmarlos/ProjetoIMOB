@@ -73,22 +73,19 @@ public class FXMLCadCorretorController implements Initializable {
         System.out.println("Controlador inicializado");
     }
 
-    public void carregarCorretoresNaTableView() {
 
-        colunaIdCorretor.setCellValueFactory(new PropertyValueFactory<>("id_Corretor"));
-        colunaCodigoCorretor.setCellValueFactory(new PropertyValueFactory<>("codigo_Corretor"));
-        colunaNumeroCreci.setCellValueFactory(new PropertyValueFactory<>("numero_Creci"));
-        colunaTb_pessoa_fisica_id_PessoaPF.setCellValueFactory(new PropertyValueFactory<>("tb_pessoa_fisica_id_PessoaPF"));
-        colunaTb_pessoa_fisica_tb_pessoa_id_Pessoa.setCellValueFactory(new PropertyValueFactory<>("tb_pessoa_fisica_tb_pessoa_id_Pessoa"));
-        colunaTb_pagamento_comissao_id_Pag_Comissao.setCellValueFactory(new PropertyValueFactory<>("tb_pagamento_comissao_id_Pag_Comissao"));
+@FXML
+        public void carregarCorretoresNaTableView() {
+            colunaIdCorretor.setCellValueFactory(new PropertyValueFactory<>("id_Corretor"));
+            colunaCodigoCorretor.setCellValueFactory(new PropertyValueFactory<>("id_Codigo_Corretor"));
+            colunaNumeroCreci.setCellValueFactory(new PropertyValueFactory<>("numero_Creci"));
+            colunaTb_pessoa_fisica_id_PessoaPF.setCellValueFactory(new PropertyValueFactory<>("tb_pessoa_fisica_id_PessoaPF"));
+            colunaTb_pessoa_fisica_tb_pessoa_id_Pessoa.setCellValueFactory(new PropertyValueFactory<>("tb_pessoa_fisica_tb_pessoa_id_Pessoa"));
+            colunaTb_pagamento_comissao_id_Pag_Comissao.setCellValueFactory(new PropertyValueFactory<>("tb_pagamento_comissao_id_Pag_Comissao"));
 
-
-
-        listCorretores = corretorDAO.listar();
-
-        observableCorretores = FXCollections.observableArrayList(listCorretores);
-
-        tbCorretores.setItems(observableCorretores);
+            listCorretores = corretorDAO.listar();
+            observableCorretores = FXCollections.observableArrayList(listCorretores);
+            tbCorretores.setItems(observableCorretores);
     }
 
     @FXML
@@ -144,15 +141,33 @@ public class FXMLCadCorretorController implements Initializable {
         corretor.setId_Codigo_Corretor(Integer.parseInt(textCodigoCorretor.getText()));
         corretor.setNumero_Creci(Integer.parseInt(textNumeroCreci.getText()));
 
-        corretor.setTb_pessoa_fisica_id_PessoaPF(Integer.parseInt(Tb_pessoa_fisica_id_PessoaPF.getText()));
-        corretor.setTb_pessoa_fisica_tb_pessoa_id_Pessoa(Integer.parseInt(Tb_pessoa_fisica_tb_pessoa_id_Pessoa.getText()));
-        corretor.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(Tb_pagamento_comissao_id_Pag_Comissao.getText()));
+        String valorIdPessoaPF = Tb_pessoa_fisica_id_PessoaPF.getText();
+        if (!valorIdPessoaPF.isEmpty()) {
+            corretor.setTb_pessoa_fisica_id_PessoaPF(Integer.parseInt(valorIdPessoaPF));
+        } else {
+            // Lidar com o caso em que o campo está vazio
+        }
+
+        String valorIdPessoa = Tb_pessoa_fisica_tb_pessoa_id_Pessoa.getText();
+        if (!valorIdPessoa.isEmpty()) {
+            corretor.setTb_pessoa_fisica_tb_pessoa_id_Pessoa(Integer.parseInt(valorIdPessoa));
+        } else {
+            // Lidar com o caso em que o campo está vazio
+        }
+
+        String valorIdPagamento = Tb_pagamento_comissao_id_Pag_Comissao.getText();
+        if (!valorIdPagamento.isEmpty()) {
+            corretor.setTb_pagamento_comissao_id_Pag_Comissao(Integer.parseInt(valorIdPagamento));
+        } else {
+            // Lidar com o caso em que o campo está vazio
+        }
 
         corretorDAO.atualizar(corretor);
 
         limparCampos();
         carregarCorretoresNaTableView();
     }
+
 
     private void limparCampos() {
         textIdCorretor.clear();

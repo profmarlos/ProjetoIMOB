@@ -42,17 +42,16 @@ public class CorretorDAO {
     }
 
     public boolean atualizar(Corretor corretor) {
-        String sql = "UPDATE tb_corretor SET id_Codigo_Corretor = ?, numero_Creci = ?,tb_pessoa_fisica_id_PessoaPF = ?, tb_pessoa_fisica_tb_pessoa_id_Pessoa = ? , tb_pagamento_comissao_id_Pag_Comissao = ? , WHERE id_Corretor = ?";
+        String sql = "UPDATE tb_corretor SET id_Codigo_Corretor = ?, numero_Creci = ?, tb_pessoa_fisica_id_PessoaPF = ?, tb_pessoa_fisica_tb_pessoa_id_Pessoa = ?, tb_pagamento_comissao_id_Pag_Comissao = ? WHERE id_Corretor = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Codigo_Corretor());
             stmt.setInt(2, corretor.getNumero_Creci());
-            stmt.setInt(3, corretor.getId_Corretor());
-            stmt.setInt(4, corretor.getTb_pessoa_fisica_id_PessoaPF());
-            stmt.setInt(5, corretor.getTb_pessoa_fisica_tb_pessoa_id_Pessoa());
-            stmt.setInt(6, corretor.getTb_pagamento_comissao_id_Pag_Comissao());
-
-            stmt.executeUpdate();
+            stmt.setInt(3, corretor.getTb_pessoa_fisica_id_PessoaPF());
+            stmt.setInt(4, corretor.getTb_pessoa_fisica_tb_pessoa_id_Pessoa());
+            stmt.setInt(5, corretor.getTb_pagamento_comissao_id_Pag_Comissao());
+            stmt.setInt(6, corretor.getId_Corretor());
+            stmt.execute();
 
             return true;
         } catch (SQLException e) {
@@ -61,13 +60,14 @@ public class CorretorDAO {
         }
     }
 
+
     public boolean remover(Corretor corretor) {
         String sql = "DELETE FROM tb_corretor WHERE id_Corretor = ?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, corretor.getId_Corretor());
 
-            stmt.executeUpdate();
+            stmt.execute();
 
             return true;
         } catch (SQLException e) {
