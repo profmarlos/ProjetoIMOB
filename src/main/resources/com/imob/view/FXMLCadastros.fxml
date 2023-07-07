@@ -63,7 +63,7 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnCadPrestServ" mnemonicParsing="false" prefHeight="91.0" prefWidth="353.0" text="Prestadores de Serviços" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button fx:id="btnCadPrestServ" mnemonicParsing="false" onAction="#abrirFXMLPrestadores" prefHeight="91.0" prefWidth="353.0" text="Prestadores de Serviços" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>

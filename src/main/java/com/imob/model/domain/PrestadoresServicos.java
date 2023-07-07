@@ -7,7 +7,7 @@ import java.sql.Date;
  *
  * @author
  */
-public class PrestadoresServicos extends PessoaJuridica{
+public class PrestadoresServicos{
  
     
     //atributos

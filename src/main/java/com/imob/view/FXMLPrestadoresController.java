@@ -1,13 +1,13 @@
 package com.imob.view;
 
-import com.imob.model.dao.PessoaFisicaDAO;
+
 import com.imob.model.dao.PrestadoresDAO;
 import com.imob.model.database.Database;
 import com.imob.model.database.DatabaseFactory;
 
 import java.text.ParseException;
 
-import com.imob.model.domain.PessoaFisica;
+import com.imob.model.domain.PrestadoresServicos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,27 +53,27 @@ public class FXMLPrestadoresController implements Initializable {
     private Button BtDel;
 
     @FXML
-    private TableView<Prestador> IdTable;
+    private TableView<PrestadoresServicos> IdTable;
 
     @FXML
-    private TableColumn<Prestador, String> Tb_cod;
+    private TableColumn<PrestadoresServicos, String> Tb_cod;
     @FXML
-    private TableColumn<Prestador, String> TbNome;
+    private TableColumn<PrestadoresServicos, String> TbNome;
     @FXML
-    private TableColumn<Prestador, String> TbCodServ;
+    private TableColumn<PrestadoresServicos, String> TbCodServ;
     @FXML
-    private TableColumn<Prestador, String> TbTipo;
+    private TableColumn<PrestadoresServicos, String> TbTipo;
     @FXML
-    private TableColumn<Prestador, Date> TbInicial;
+    private TableColumn<PrestadoresServicos, Date> TbInicial;
     @FXML
-    private TableColumn<Prestador, String> TbFinal;
+    private TableColumn<PrestadoresServicos, String> TbFinal;
     @FXML
-    private TableColumn<Prestador, String> TbAnotacoes;
+    private TableColumn<PrestadoresServicos, String> TbAnotacoes;
 
     @FXML
-    private TableView<Prestador> IdTable;
-    private List<Prestador> listPrestador;
-    private ObservableList<Prestador> observablePrestador;
+   // private TableView<PrestadoresServicos> IdTable;
+    private List<PrestadoresDAO> listPrestador;
+    private ObservableList<PrestadoresDAO> observablePrestador;
 
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
@@ -84,15 +84,15 @@ public class FXMLPrestadoresController implements Initializable {
         //conexão com o banco de dados
         prestadoresDAO.setConnection(connection);
 
-        carregaPrestadorTableView();
+        //carregaPrestadorTableView();
         System.out.println("Controlador inicializado");
 
     }
 
     public void carregaPrestadorTableView() {
-        Tb_cod.setCellValueFactory(new PropertyValueFactory<>("id_Prestador"));
+       // Tb_cod.setCellValueFactory(new PropertyValueFactory<>("id_Prestador"));
         TbNome.setCellValueFactory(new PropertyValueFactory<>("id_Codigo_Prestador"));
-        TbCodServ.setCellValueFactory(new PropertyValueFactory<>("id_Codigo_Servico"));
+        //TbCodServ.setCellValueFactory(new PropertyValueFactory<>("id_Codigo_Servico"));
         TbTipo.setCellValueFactory(new PropertyValueFactory<>("tipo_servico_prestado"));
         TbInicial.setCellValueFactory(new PropertyValueFactory<>("data_Inicial"));
         TbFinal.setCellValueFactory(new PropertyValueFactory<>("data_Final"));
@@ -100,16 +100,16 @@ public class FXMLPrestadoresController implements Initializable {
 
 
 
-        listPrestador = PrestadoresDAO.lista();
+       // listPrestador = PrestadoresServicos.lista();
 
         observablePrestador = FXCollections.observableArrayList(listPrestador);
 
-        IdTable.setItems(observablePrestador);
+       // IdTable.setItems(observablePrestador);
     }
 
     @FXML
-    private void inserirDadosNoBanco(ActionEvent event) throws ParseException {
-        Prestador prestadores = new Prestador();
+   /* private void inserirDadosNoBanco(ActionEvent event) throws ParseException {
+        PrestadoresServicos prestadores = new PrestadoresServicos();
 
         prestadores.setId_Prestador(resultado.getInt("id_Codigo"));
         prestadores.setId_Codigo_Prestador(resultado.getString("id_Codigo_Prestador"));
@@ -127,7 +127,7 @@ public class FXMLPrestadoresController implements Initializable {
         carregaPrestadorTableView();
     }
     @FXML
-    private void selecionarLinhaViewTable(MouseEvent event) {
+   /* private void selecionarLinhaViewTable(MouseEvent event) {
 
         id_Prestador.setText(String.valueOf(tbPessoaFisica.getSelectionModel().getSelectedItem().getId_PessoaPF()));
         id_Codigo_Prestador.setText(String.valueOf(tbPessoaFisica.getSelectionModel().getSelectedItem().getNome()));
@@ -143,7 +143,7 @@ public class FXMLPrestadoresController implements Initializable {
     }
     @FXML
     private void deletarNoBanco(ActionEvent event) {
-        Prestador prestadores = new Prestador();
+        PrestadoresServicos prestadores = new PrestadoresServicos();
         prestadores.setIdCodigo(Integer.parseInt(IdCodigo.getText()));
 
         PrestadoresDAO.remover(prestadores);
@@ -154,8 +154,8 @@ public class FXMLPrestadoresController implements Initializable {
         carregaPrestadorTableView();
     }
     public void limparCampos() {
-        id_Prestador.setText("");
-        id_Codigo_Prestador.setText("");
+      //  id_Prestador.setText("");
+       // id_Codigo_Prestador.setText("");
         codigo_Serviço.setText("");
         tipo_servico_prestado.setText("");
         data_Inicial.setId("");
@@ -163,24 +163,23 @@ public class FXMLPrestadoresController implements Initializable {
         anotacoes.setText("");
 
 
-    }
-    @FXML
+    }*/
     private void atualizarDadosNoBanco(ActionEvent event) {
 
-        Prestador prestadores = new Prestador();
+        PrestadoresServicos prestadores = new PrestadoresServicos();
 
         prestadores.setId_Prestador(Integer.parseInt(IdCodigo.getText()));
-        prestadores.setId_Codigo_Prestador(IdNomePrestador.getText());
-        prestadores.setCodigo_Serviço(IdCodigoServico.getText());
+        //prestadores.setId_Codigo_Prestador(IdNomePrestador.getText());
+       // prestadores.setCodigo_Servico(IdCodigoServico.getText());
         prestadores.setTipo_servico_prestado(IdTipoServico.getText());
         prestadores.setData_Inicial(Date.valueOf(IdDataInicial.getId()));
-        prestadores.setData_Final((IdDataFinal.getText()));
+       // prestadores.setData_Final((IdDataFinal.getText()));
         prestadores.setAnotacoes((IdAnotacoes.getText()));
 
 
         PrestadoresDAO.alterar(prestadores);
 
-        limparCampos();
+       // limparCampos();
 
         carregaPrestadorTableView();
     }
