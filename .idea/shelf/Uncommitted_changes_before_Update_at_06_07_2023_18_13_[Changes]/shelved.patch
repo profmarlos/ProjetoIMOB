@@ -1,0 +1,136 @@
+Index: .idea/codeStyles/codeStyleConfig.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/codeStyles/codeStyleConfig.xml b/.idea/codeStyles/codeStyleConfig.xml
+new file mode 100644
+--- /dev/null	(date 1687912946136)
++++ b/.idea/codeStyles/codeStyleConfig.xml	(date 1687912946136)
+@@ -0,0 +1,5 @@
++<component name="ProjectCodeStyleConfiguration">
++  <state>
++    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
++  </state>
++</component>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_X\" default=\"true\" project-jdk-name=\"20\" project-jdk-type=\"JavaSDK\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 52255b58b8e01bdb97a39caa443a2aee4260163c)
++++ b/.idea/misc.xml	(date 1688677897892)
+@@ -8,5 +8,5 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="20" project-jdk-type="JavaSDK" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" project-jdk-name="corretto-19" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Encoding\">\r\n    <file url=\"file://$PROJECT_DIR$/src/main/java\" charset=\"UTF-8\" />\r\n    <file url=\"file://$PROJECT_DIR$/src/main/resources\" charset=\"UTF-8\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+--- a/.idea/encodings.xml	(revision 52255b58b8e01bdb97a39caa443a2aee4260163c)
++++ b/.idea/encodings.xml	(date 1687912946156)
+@@ -2,6 +2,7 @@
+ <project version="4">
+   <component name="Encoding">
+     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/java/com/imob/view/FXMLAtualizaLoginController.java" charset="windows-1252" />
+     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/codeStyles/Project.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/codeStyles/Project.xml b/.idea/codeStyles/Project.xml
+new file mode 100644
+--- /dev/null	(date 1687912946144)
++++ b/.idea/codeStyles/Project.xml	(date 1687912946144)
+@@ -0,0 +1,7 @@
++<component name="ProjectCodeStyleConfiguration">
++  <code_scheme name="Project" version="173">
++    <ScalaCodeStyleSettings>
++      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
++    </ScalaCodeStyleSettings>
++  </code_scheme>
++</component>
+\ No newline at end of file
+Index: src/main/java/com/imob/view/FXMLCadastrosController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.imob.view;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\nimport java.util.logging.Level;\r\nimport java.util.logging.Logger;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Button;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\n\r\n/**\r\n * FXML Controller class\r\n *\r\n * @author\r\n */\r\npublic class FXMLCadastrosController implements Initializable {\r\n\r\n    @FXML\r\n    private Button btnCadCliPF;\r\n    @FXML\r\n    private Button btnCadImoUr;\r\n    @FXML\r\n    private Button btnCadCliPJ;\r\n    @FXML\r\n    private Button btnCadImovRu;\r\n    @FXML\r\n    private Button btnCadCorretor;\r\n    @FXML\r\n    private Button btnCadImobiliaria;\r\n    @FXML\r\n    private Button btnCadFuncionairo;\r\n    @FXML\r\n    private Button btnCadPrestServ;\r\n    @FXML\r\n    private Button btnCadLogin;\r\n    @FXML\r\n    private Button btnCadLog;\r\n    @FXML\r\n    private Button btnCadBairro;\r\n    @FXML\r\n    private Button btnCadCidade;\r\n    @FXML\r\n    private Button btnCadEstado;\r\n    @FXML\r\n    private Button btnTeste;\r\n\r\n    /**\r\n     * Initializes the controller class.\r\n     */\r\n    @Override\r\n    public void initialize(URL url, ResourceBundle rb) {\r\n        // TODO\r\n    }    \r\n\r\n    @FXML//método para abrir o FXMLCadPF\r\n    private void abrirFXMLCadPF(ActionEvent event)\r\n    {\r\n        try\r\n        {\r\n            Stage stage = new Stage();\r\n\r\n            Parent root = FXMLLoader.load(getClass().getResource(\"FXMLCadPessoaFisica.fxml\"));\r\n\r\n            Scene scene = new Scene(root);\r\n            \r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stage.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stage.setScene(scene);\r\n\r\n            stage.show();//abria a stage\r\n\r\n        } \r\n        catch (IOException ex)\r\n        {\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n   \r\n\r\n    @FXML\r\n    private void abrirFXMLCadEstados(ActionEvent event) {\r\n        \r\n         try\r\n        {\r\n            Stage stageCadEstados = new Stage();\r\n\r\n            Parent rootCadEstados = FXMLLoader.load(getClass().getResource(\"FXMLCadEstados.fxml\"));\r\n\r\n            Scene sceneCadEstados = new Scene(rootCadEstados);\r\n            \r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadEstados.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadEstados.setScene(sceneCadEstados);\r\n\r\n            stageCadEstados.show();//abria a stage\r\n\r\n        } \r\n        catch (IOException ex)\r\n        {\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void abrirFXMLCadLogin(ActionEvent event) {\r\n\r\n        try {\r\n            Stage stageCadLogin = new Stage();\r\n\r\n            Parent rootCadLogin = FXMLLoader.load(getClass().getResource(\"FXMLLoginList.fxml\"));\r\n\r\n            Scene sceneCadLogin = new Scene(rootCadLogin);\r\n\r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadLogin.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadLogin.setScene(sceneCadLogin);\r\n\r\n            stageCadLogin.show();//abria a stage\r\n\r\n        }\r\n        catch (IOException ex) {\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void abrirFXMLCadCidades(ActionEvent event) {\r\n        \r\n         try\r\n        {\r\n            Stage stageCadCidades = new Stage();\r\n\r\n            Parent rootCadCidades = FXMLLoader.load(getClass().getResource(\"FXMLCidades.fxml\"));\r\n\r\n            Scene sceneCadCidades = new Scene(rootCadCidades);\r\n            \r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadCidades.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadCidades.setScene(sceneCadCidades);\r\n\r\n            stageCadCidades.show();//abria a stage\r\n\r\n        } \r\n        catch (IOException ex)\r\n        {\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void abrirFXMLCadLogradouros(ActionEvent event) {\r\n\r\n        try\r\n        {\r\n            Stage stageCadLogradouros = new Stage();\r\n\r\n            Parent rootCadLogradouros = FXMLLoader.load(getClass().getResource(\"FXMLEnderecos.fxml\"));\r\n\r\n            Scene sceneCadLogradouros = new Scene(rootCadLogradouros);\r\n\r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadLogradouros.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadLogradouros.setScene(sceneCadLogradouros);\r\n\r\n            stageCadLogradouros.show();//abria a stage\r\n\r\n        }\r\n        catch (IOException ex)\r\n        {\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void abrirFXMLImoveisRurais(ActionEvent event){\r\n        try\r\n        {\r\n\r\n            Stage stageCadImoveisRu = new Stage();\r\n\r\n            Parent rootCadImoveisRu = FXMLLoader.load(getClass().getResource(\"FXMLCadImoveisRurais.fxml\"));\r\n\r\n            Scene sceneCadImoveisRu = new Scene(rootCadImoveisRu);\r\n\r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadImoveisRu.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadImoveisRu.setScene(sceneCadImoveisRu);\r\n\r\n            stageCadImoveisRu.show();//abria a stage\r\n        }catch (IOException ex){\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n    @FXML\r\n    private void abrirFXMLImoveisUrbanos(ActionEvent event){\r\n        try\r\n        {\r\n\r\n            Stage stageCadImoveisUrbanos = new Stage();\r\n\r\n            Parent rootCadImoveisUrbanos = FXMLLoader.load(getClass().getResource(\"FXMLCadImoveisUrbanos.fxml\"));\r\n\r\n            Scene sceneCadImoveisUrbanos = new Scene(rootCadImoveisUrbanos);\r\n\r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadImoveisUrbanos.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadImoveisUrbanos.setScene(sceneCadImoveisUrbanos);\r\n\r\n            stageCadImoveisUrbanos.show();//abria a stage\r\n        }catch (IOException ex){\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n//\r\n    @FXML\r\n    private void abrirFXMLTeste(ActionEvent event){\r\n        try\r\n        {\r\n            Stage stageCadCidades = new Stage();\r\n\r\n            Parent rootCadCidades = FXMLLoader.load(getClass().getResource(\"FXMLTeste.fxml\"));\r\n\r\n            Scene sceneCadCidades = new Scene(rootCadCidades);\r\n\r\n            //para retirar todos os botões de minimizar, maximizar e fechar\r\n            stageCadCidades.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageCadCidades.setScene(sceneCadCidades);\r\n\r\n            stageCadCidades.show();//abria a stage\r\n        }catch (IOException ex){\r\n            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n\r\n    @FXML\r\n    private void abrirFXMLImobiliaria(ActionEvent event) {\r\n        try {\r\n            Stage stageImobiliaria = new Stage();\r\n            Parent rootImobiliaria = FXMLLoader.load(getClass().getResource(\"FXMLImobiliariaController.fxml\"));\r\n            Scene sceneImobiliaria = new Scene(rootImobiliaria);\r\n\r\n            // Para remover todos os botões de minimizar, maximizar e fechar\r\n            stageImobiliaria.initStyle(StageStyle.UNDECORATED);\r\n\r\n            stageImobiliaria.setScene(sceneImobiliaria);\r\n            stageImobiliaria.show();\r\n        } catch (IOException ex) {\r\n            Logger.getLogger(FXMLCadastrosController.class.getName()).log(Level.SEVERE, null, ex);\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/imob/view/FXMLCadastrosController.java b/src/main/java/com/imob/view/FXMLCadastrosController.java
+--- a/src/main/java/com/imob/view/FXMLCadastrosController.java	(revision 52255b58b8e01bdb97a39caa443a2aee4260163c)
++++ b/src/main/java/com/imob/view/FXMLCadastrosController.java	(date 1687912946622)
+@@ -205,29 +205,8 @@
+             Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+-    @FXML
+-    private void abrirFXMLImoveisUrbanos(ActionEvent event){
+-        try
+-        {
+-
+-            Stage stageCadImoveisUrbanos = new Stage();
+-
+-            Parent rootCadImoveisUrbanos = FXMLLoader.load(getClass().getResource("FXMLCadImoveisUrbanos.fxml"));
+-
+-            Scene sceneCadImoveisUrbanos = new Scene(rootCadImoveisUrbanos);
+-
+-            //para retirar todos os botões de minimizar, maximizar e fechar
+-            stageCadImoveisUrbanos.initStyle(StageStyle.UNDECORATED);
+-
+-            stageCadImoveisUrbanos.setScene(sceneCadImoveisUrbanos);
+-
+-            stageCadImoveisUrbanos.show();//abria a stage
+-        }catch (IOException ex){
+-            Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+-        }
+-    }
+-
+-//
++
++
+     @FXML
+     private void abrirFXMLTeste(ActionEvent event){
+         try
+@@ -248,21 +227,5 @@
+             Logger.getLogger(FXMLTelaPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     }
+-
+-    @FXML
+-    private void abrirFXMLImobiliaria(ActionEvent event) {
+-        try {
+-            Stage stageImobiliaria = new Stage();
+-            Parent rootImobiliaria = FXMLLoader.load(getClass().getResource("FXMLImobiliariaController.fxml"));
+-            Scene sceneImobiliaria = new Scene(rootImobiliaria);
+-
+-            // Para remover todos os botões de minimizar, maximizar e fechar
+-            stageImobiliaria.initStyle(StageStyle.UNDECORATED);
+-
+-            stageImobiliaria.setScene(sceneImobiliaria);
+-            stageImobiliaria.show();
+-        } catch (IOException ex) {
+-            Logger.getLogger(FXMLCadastrosController.class.getName()).log(Level.SEVERE, null, ex);
+-        }
+-    }
++    
+ }
